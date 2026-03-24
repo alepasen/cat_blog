@@ -70,6 +70,7 @@ header h1 {
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     position: relative;
+	backdrop-filter: blur(10px); background: rgba(30, 30, 30, 0.7);
 }
 
 .cat-card:hover {
@@ -198,6 +199,7 @@ header h1 {
     background: var(--card-bg);
     padding: 40px;
     border-radius: 30px;
+	backdrop-filter: blur(10px); background: rgba(30, 30, 30, 0.7);
     /* Вирівнювання вмісту */
     display: flex;
     flex-direction: column;
