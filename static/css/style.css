@@ -33,44 +33,40 @@ body {
 header {
     text-align: center;
     padding: 80px 20px;
-    /* Напівпрозорий темний фон з розмиттям підкладки */
+    /* Напівпрозорий фон, що пропускає текстуру шерсті */
     background: rgba(26, 26, 26, 0.4); 
     backdrop-filter: blur(15px); 
     -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     margin-bottom: 40px;
     position: relative;
-    overflow: hidden;
 }
 
 header h1 {
     font-family: 'Unbounded', sans-serif;
-    font-size: clamp(2.5rem, 10vw, 5rem); /* Адаптивний розмір */
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: -2px;
     margin: 0;
     
-    /* Триярусний градієнт */
+    /* Триярусний градієнт: Блакитний -> Білий -> Фіолетовий */
     background: linear-gradient(
         90deg, 
         var(--accent-pes) 0%, 
         #ffffff 50%, 
         var(--accent-mysh) 100%
     );
-    background-size: 200% auto; /* Для анімації переливу */
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
-    /* Анімація переливу градієнта */
+    /* Анімація блиску */
     animation: shine 5s linear infinite;
 }
 
-/* Анімація для заголовка */
 @keyframes shine {
-    to {
-        background-position: 200% center;
-    }
+    to { background-position: 200% center; }
 }
 
 .header-subtitle {
