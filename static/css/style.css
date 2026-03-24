@@ -17,10 +17,16 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--bg-dark);
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
+
+    /* НОВИЙ ФОН З ТЕКСТУРОЮ ШЕРСТІ */
+    background-color: var(--bg-dark); /* Колір-підкладка, якщо фото не завантажиться */
+    background-image: url('../images/fur_bg.png'); /* Шлях до вашої текстури */
+    background-repeat: repeat; /* Текстура повторюється, заповнюючи весь простір */
+    background-attachment: fixed; /* Фон залишається нерухомим при скролі (ефект паралаксу) */
+    background-size: 300px; /* Розмір одного квадрата текстури (можна регулювати) */
 }
 
 /* ШАПКА */
@@ -250,3 +256,10 @@ header h1 {
 
 .pes .tag { background: rgba(0, 242, 254, 0.1); color: var(--accent-pes); }
 .mysh .tag { background: rgba(112, 0, 255, 0.1); color: var(--accent-mysh); }
+
+/* Адаптація для телефонів */
+@media (max-width: 600px) {
+    .gallery-grid {
+        grid-template-columns: repeat(1, 1fr); /* На мобілках — по одному */
+    }
+}
