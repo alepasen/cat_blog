@@ -154,6 +154,28 @@ header h1 {
     filter: brightness(1.1);
 }
 
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-muted); /* Світло-сірий за замовчуванням */
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--accent-pes); /* Стає яскравим при наведенні */
+    background: rgba(0, 242, 254, 0.05);
+    border-color: var(--accent-pes);
+    transform: translateX(-5px); /* Легкий рух вліво для ефекту "назад" */
+}
+
 /* СТОРІНКА ДЕТАЛЕЙ */
 .profile-container {
     max-width: 900px;
