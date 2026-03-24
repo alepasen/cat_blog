@@ -1,65 +1,89 @@
-/* 1. ПРАВИМ ХЕДЕР (щоб текст було видно) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Unbounded:wght@900&display=swap');
+
+:root {
+    --bg-dark: #121212;
+    --card-bg: rgba(30, 30, 30, 0.85);
+    --text-main: #ffffff; /* Текст тепер чисто білий */
+    --text-muted: #cccccc;
+    --accent-pes: #00f2fe; 
+    --accent-mysh: #7000ff;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-main);
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+        url('../images/fur_bg.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+}
+
+/* ФІКСИМО ХЕДЕР */
 header {
     text-align: center;
     padding: 60px 20px;
-    background: rgba(0, 0, 0, 0.3); /* Трохи затемнимо підкладку під текстом */
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 40px;
 }
 
 header h1 {
     font-family: 'Unbounded', sans-serif;
     font-size: clamp(2rem, 8vw, 4rem);
-    /* Текст тепер білий з градієнтом, його БУДЕ видно */
-    background: linear-gradient(90deg, #ffffff, var(--accent-pes), #ffffff);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 5s linear infinite;
-    filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.3)); /* Легке світіння */
+    color: #ffffff; /* Яскраво білий колір */
+    text-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
+    text-transform: uppercase;
+    margin: 0;
 }
 
-.header-subtitle {
-    color: #ffffff; /* Білий підзаголовок */
-    opacity: 0.9;
-    font-weight: 500;
-    margin-top: 10px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-/* 2. ЦЕНТРУЄМО КАРТКИ */
+/* ФІКСИМО КАРТКИ */
 .cat-container {
     display: flex;
-    justify-content: center; /* Центрує картки по горизонталі */
-    align-items: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
     padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto; /* Центрує сам контейнер */
 }
 
-/* 3. КАРТКА (додаємо чіткості) */
 .cat-card {
-    background: rgba(25, 25, 25, 0.85); /* Темніша картка, щоб виділялася */
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 28px;
     width: 350px;
-    min-height: 620px;
+    height: 600px; /* СТРОГО фіксована висота */
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* Текст всередині картки теж має бути світлим */
+.cat-card img {
+    width: 100%;
+    height: 320px; /* Однакова висота для всіх фото */
+    object-fit: cover; /* Обрізає зайве, не розтягуючи кота */
+}
+
+.cat-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
 .cat-info h2 {
-    color: #ffffff; 
-    margin-top: 15px;
+    font-family: 'Unbounded', sans-serif;
+    color: #ffffff;
+    margin: 10px 0;
 }
 
-.cat-info p {
-    color: #cccccc; /* Світло-сірий текст опису */
+.btn {
+    display: block;
+    padding: 15px;
+    background: linear-gradient(45deg, var(--accent-pes), var(--accent-mysh));
+    color: white;
+    text-decoration: none;
+    border-radius: 14px;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
 }
