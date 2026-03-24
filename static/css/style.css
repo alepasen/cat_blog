@@ -1,80 +1,65 @@
-body {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--text-main);
-    background-color: #1a1a1a;
-    
-    /* ФОН - ТЕПЕР З ПРАВИЛЬНИМ РОЗШИРЕННЯМ .png */
-    background: 
-        linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)), 
-        url('../images/fur_bg.png') no-repeat center center fixed;
-    background-size: cover;
-    margin: 0;
-    min-height: 100vh;
-}
-
-/* ФІКСУЄМО РОЗМІРИ КАРТОК (Щоб не було як на скріншоті) */
-.cat-card {
-    background: rgba(30, 30, 30, 0.7);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 28px;
-    width: 350px; 
-    height: 620px; /* Сувора фіксована висота всієї картки */
-    display: flex;
-    flex-direction: column;
-    overflow: hidden; 
-    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.cat-card img {
-    width: 100%;
-    height: 320px; /* Сувора фіксована висота фото */
-    min-height: 320px;
-    object-fit: cover; /* Це магічна властивість: вона обріже фото, але не змінить пропорції */
-    display: block;
-}
-
-.cat-info {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; 
+/* 1. ПРАВИМ ХЕДЕР (щоб текст було видно) */
+header {
     text-align: center;
-    justify-content: space-between; /* Рівномірно розподіляє: ім'я зверху, кнопка знизу */
+    padding: 60px 20px;
+    background: rgba(0, 0, 0, 0.3); /* Трохи затемнимо підкладку під текстом */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 40px;
 }
 
-.cat-info h2 {
+header h1 {
     font-family: 'Unbounded', sans-serif;
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-    background: linear-gradient(45deg, var(--accent-pes), var(--accent-mysh));
+    font-size: clamp(2rem, 8vw, 4rem);
+    /* Текст тепер білий з градієнтом, його БУДЕ видно */
+    background: linear-gradient(90deg, #ffffff, var(--accent-pes), #ffffff);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: shine 5s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.3)); /* Легке світіння */
+}
+
+.header-subtitle {
+    color: #ffffff; /* Білий підзаголовок */
+    opacity: 0.9;
+    font-weight: 500;
+    margin-top: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* 2. ЦЕНТРУЄМО КАРТКИ */
+.cat-container {
+    display: flex;
+    justify-content: center; /* Центрує картки по горизонталі */
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Центрує сам контейнер */
+}
+
+/* 3. КАРТКА (додаємо чіткості) */
+.cat-card {
+    background: rgba(25, 25, 25, 0.85); /* Темніша картка, щоб виділялася */
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 28px;
+    width: 350px;
+    min-height: 620px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Текст всередині картки теж має бути світлим */
+.cat-info h2 {
+    color: #ffffff; 
+    margin-top: 15px;
 }
 
 .cat-info p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    /* Обмежуємо текст опису, щоб він не розпирав картку */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    margin-bottom: 15px;
-}
-
-/* КНОПКА - ТЕПЕР ЗАВЖДИ ВИДИМА */
-.btn {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    background: linear-gradient(45deg, var(--accent-pes), var(--accent-mysh));
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Unbounded', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 700;
-    border-radius: 14px;
-    text-transform: uppercase;
-    margin-top: auto; /* Виштовхує кнопку в самий низ cat-info */
+    color: #cccccc; /* Світло-сірий текст опису */
 }
