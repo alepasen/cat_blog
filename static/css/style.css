@@ -61,19 +61,34 @@ header h1 {
 }
 
 /* ФОТО НА ГОЛОВНІЙ - ТУТ ЗАЛИШИВ ОДИН БЛОК 350PX */
+.cat-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    width: 350px;
+    height: 520px; /* Фіксована загальна висота всієї картки */
+    display: flex;
+    flex-direction: column; /* Розміщуємо контент вертикально */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .cat-card img {
     width: 100%;
-    height: 350px;    
-    object-fit: cover; 
-    display: block;    
+    height: 300px;     /* Жорстко задаємо висоту фото */
+    min-height: 300px; /* Додатковий захист від стискання */
+    object-fit: cover; /* Обрізає краї, зберігаючи пропорції */
+    object-position: center; /* Центрує мордаху в рамці */
     filter: grayscale(20%);
     transition: 0.4s;
+    display: block;
 }
+
+
 
 .cat-card:hover {
     transform: translateY(-15px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .cat-card:hover img {
@@ -82,8 +97,12 @@ header h1 {
 
 /* Текст та Теги */
 .cat-info {
-    padding: 30px;
+    padding: 20px;
     text-align: center;
+    flex-grow: 1; /* Заповнює простір, що залишився */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Рівномірно розподіляє ім'я та кнопку */
 }
 
 .cat-info h2 {
@@ -177,23 +196,56 @@ header h1 {
 }
 
 /* Кнопка */
+/* Кнопка з ефектом пульсації та градієнтом */
 .btn {
     background: linear-gradient(45deg, var(--accent-pes), var(--accent-mysh));
+    background-size: 200% auto; /* Для анімації переливу */
     border-radius: 16px;
-    padding: 15px 40px;
+    padding: 16px 42px;
     border: none;
     color: white;
+    font-family: 'Unbounded', sans-serif; /* Додаємо крутий шрифт і на кнопку */
+    font-size: 0.9rem;
     font-weight: 700;
     cursor: pointer;
-    transition: 0.3s;
     text-decoration: none;
     display: inline-block;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* М'яка анімація */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
 
 .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 30px rgba(0, 242, 254, 0.3);
+    transform: translateY(-5px) scale(1.05); /* Підстрибує вгору */
+    background-position: right center; /* Зміщуємо градієнт */
+    box-shadow: 0 15px 30px rgba(0, 242, 254, 0.4); /* Неонове сяйво */
+    color: #fff;
+}
+
+/* Ефект "відблиску", що проходить по кнопці */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.6s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:active {
+    transform: scale(0.95); /* Ефект натискання */
 }
 
 /* Фонове сяйво */
