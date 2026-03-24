@@ -155,3 +155,29 @@ footer {
     padding: 40px 20px;
     color: #a0a0a0;
 }
+.gallery-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Авто-сітка */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover; /* Квадратні фото */
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05); /* Легке збільшення при наведенні */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
