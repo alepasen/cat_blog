@@ -56,6 +56,9 @@ header h1 {
     border-radius: 24px;
     overflow: hidden;
     width: 350px;
+    height: 600px; /* <--- Задаємо жорстку висоту всієї картки */
+    display: flex;
+    flex-direction: column; /* Елементи розташовуються вертикально */
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -75,13 +78,10 @@ header h1 {
 
 .cat-card img {
     width: 100%;
-    height: 300px;     /* Жорстко задаємо висоту фото */
-    min-height: 300px; /* Додатковий захист від стискання */
-    object-fit: cover; /* Обрізає краї, зберігаючи пропорції */
-    object-position: center; /* Центрує мордаху в рамці */
+    height: 350px;
+    object-fit: cover;
     filter: grayscale(20%);
     transition: 0.4s;
-    display: block;
 }
 
 
@@ -97,22 +97,28 @@ header h1 {
 
 /* Текст та Теги */
 .cat-info {
-    padding: 20px;
+    padding: 25px;
     text-align: center;
-    flex-grow: 1; /* Заповнює простір, що залишився */
+    flex-grow: 1; /* Блок займає весь простір, що залишився */
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Рівномірно розподіляє ім'я та кнопку */
+    align-items: center; /* Центрує вміст */
 }
 
 .cat-info h2 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 900;
+    margin-bottom: 5px; /* Менший відступ */
+}
+
+.cat-info p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
     margin-bottom: 15px;
-    letter-spacing: -1px;
-    text-transform: uppercase;
-    transition: 0.3s;
+    overflow: hidden; /* Приховує текст, що не влазить */
+    text-overflow: ellipsis; /* Додає три крапки "..." */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Показувати лише 2 рядки опису */
+    -webkit-box-orient: vertical;
 }
 
 .cat-card:hover .cat-info h2 {
@@ -198,22 +204,9 @@ header h1 {
 /* Кнопка */
 /* Кнопка з ефектом пульсації та градієнтом */
 .btn {
-    background: linear-gradient(45deg, var(--accent-pes), var(--accent-mysh));
-    background-size: 200% auto; /* Для анімації переливу */
-    border-radius: 16px;
-    padding: 16px 42px;
-    border: none;
-    color: white;
-    font-family: 'Unbounded', sans-serif; /* Додаємо крутий шрифт і на кнопку */
-    font-size: 0.9rem;
-    font-weight: 700;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* М'яка анімація */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
+    margin-top: auto; /* <--- Магічна властивість: кнопка "притискається" до низу */
+    width: 100%; /* Щоб кнопка була на всю ширину інфо-блоку */
+    max-width: 250px; /* Але не ширшою за 250px */
 }
 
 .btn:hover {
