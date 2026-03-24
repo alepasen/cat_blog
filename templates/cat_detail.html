@@ -31,12 +31,11 @@
 		<div class="gallery-section">
 			<h3>Галерея пухнастика:</h3>
 			<div class="gallery-grid">
-				{% for photo in cat.gallery %}
-					<div class="gallery-item">
-					<img src="{{ url_for('static', filename=photo) }}" alt="Фото {{ cat.name }}">
-            </div>
-        {% endfor %}
-    </div>
+    {% for photo in cat.gallery %}
+        <div class="gallery-item">
+            <img src="{{ url_for('static', filename=photo) }}" alt="Фото {{ cat.name }}">
+        </div> {% endfor %}
+</div>
 </div>
 
         <button class="btn" onclick="alert('Мяу! Дякуємо за увагу!')">Погладити {{ cat.name }}</button>

@@ -134,6 +134,8 @@ body.mysh { background-color: #f3e5f5; }
 
 /* Кнопка */
 .btn {
+    text-decoration: none; /* Прибираємо підкреслення тексту */
+    display: inline-block; /* Щоб кнопка правильно тримала форму */
     margin-top: 20px;
     padding: 12px 30px;
     border: none;
@@ -145,6 +147,7 @@ body.mysh { background-color: #f3e5f5; }
     cursor: pointer;
     transition: background 0.3s;
 }
+
 
 .btn:hover {
     background: #ff4081;
