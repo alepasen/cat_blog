@@ -20,13 +20,13 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
+    margin: 0;
 
-    /* НОВИЙ ФОН З ТЕКСТУРОЮ ШЕРСТІ */
-    background-color: var(--bg-dark); /* Колір-підкладка, якщо фото не завантажиться */
-    background-image: url('../images/fur_bg.png'); /* Шлях до вашої текстури */
-    background-repeat: repeat; /* Текстура повторюється, заповнюючи весь простір */
-    background-attachment: fixed; /* Фон залишається нерухомим при скролі (ефект паралаксу) */
-    background-size: 300px; /* Розмір одного квадрата текстури (можна регулювати) */
+    /* ФОН ЯК ОДНА СУЦІЛЬНА ПІДЛОЖКА */
+    background: 
+        linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)), /* Темна накидка (85% прозорості) */
+        url('../images/fur_bg.jpg') no-repeat center center fixed; /* Одне велике фото по центру */
+    background-size: cover; /* Розтягує фото на весь екран без швів */
 }
 
 /* ШАПКА */
