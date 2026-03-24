@@ -42,13 +42,14 @@ header {
     position: relative;
 }
 
-header h1 {
+/header h1 {
+    /* clamp(мінімум, динамічне значення, максимум) */
+    font-size: clamp(2rem, 8vw, 4rem); 
+    line-height: 1.1;
+    letter-spacing: -1px;
     font-family: 'Unbounded', sans-serif;
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: -2px;
-    margin: 0;
+	
     
     /* Триярусний градієнт: Блакитний -> Білий -> Фіолетовий */
     background: linear-gradient(
@@ -352,5 +353,19 @@ header h1 {
 @media (max-width: 600px) {
     .gallery-grid {
         grid-template-columns: repeat(1, 1fr); /* На мобілках — по одному */
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 40px 15px; /* Зменшуємо порожнечу зверху і знизу */
+    }
+
+    header h1 {
+        letter-spacing: -0.5px; /* Трохи щільніше для вузьких екранів */
+    }
+    
+    .profile-text h1 {
+        font-size: 2.2rem; /* Зменшуємо ім'я кота на сторінці деталей */
     }
 }
