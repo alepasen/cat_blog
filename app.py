@@ -11,7 +11,7 @@ cats_list = [
         "full_bio": "Тут довга історія про те, як ПесДюк підкорив цей світ своєю красою...",
         "button_text": "Вся краса тут",
         "img": "dyuk.jpg",
-        "gallery": ["dyuk.jpg", "dyuk2.jpg", "dyuk3.jpg", "dyuk4.jpg", "dyuk5.jpg", "dyuk6.jpg", "dyuk7.jpg"]
+        "gallery": ["dyuk1.jpg", "dyuk2.jpg", "dyuk3.jpg", "dyuk4.jpg", "dyuk5.jpg", "dyuk6.jpg", "dyuk7.jpg", "dyuk8.jpg", "dyuk9.jpg", "dyuk10.jpg"]
     },
     {
         "id": "mysh",
@@ -21,7 +21,7 @@ cats_list = [
         "full_bio": "Мишка — це енергія в чистому вигляді. Її хобі: випрошувати їжу та бігати з улюбленою іграшкою.",
         "button_text": "Дивитись фото",
         "img": "mysh.jpg",
-        "gallery": ["mysh.jpg", "mysh2.jpg"]
+        "gallery": ["mysh1.jpg", "mysh2.jpg"]
     }
 ]
 
