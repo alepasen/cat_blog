@@ -22,18 +22,17 @@ body {
     overflow-x: hidden;
     margin: 0;
 
-    /* ФОН ЯК ОДНА СУЦІЛЬНА ПІДЛОЖКА */
+    /* ФОН - ПОВЕРНУТО ТА ЗАКРІПЛЕНО */
     background: 
-        linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)), /* Темна накидка (85% прозорості) */
-        url('../images/fur_bg.jpg') no-repeat center center fixed; /* Одне велике фото по центру */
-    background-size: cover; /* Розтягує фото на весь екран без швів */
+        linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)), 
+        url('../images/fur_bg.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 /* ШАПКА - Ефект скла */
 header {
     text-align: center;
     padding: 80px 20px;
-    /* Напівпрозорий фон, що пропускає текстуру шерсті */
     background: rgba(26, 26, 26, 0.4); 
     backdrop-filter: blur(15px); 
     -webkit-backdrop-filter: blur(15px);
@@ -42,16 +41,13 @@ header {
     position: relative;
 }
 
-/header h1 {
-    /* clamp(мінімум, динамічне значення, максимум) */
-    font-size: clamp(2rem, 8vw, 4rem); 
+header h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem); 
     line-height: 1.1;
     letter-spacing: -1px;
     font-family: 'Unbounded', sans-serif;
     text-transform: uppercase;
-	
     
-    /* Триярусний градієнт: Блакитний -> Білий -> Фіолетовий */
     background: linear-gradient(
         90deg, 
         var(--accent-pes) 0%, 
@@ -61,8 +57,6 @@ header {
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    /* Анімація блиску */
     animation: shine 5s linear infinite;
 }
 
@@ -80,7 +74,7 @@ header {
     opacity: 0.8;
 }
 
-/* КОНТЕЙНЕР */
+/* КОНТЕЙНЕРИ ТА КАРТКИ */
 .cat-container {
     display: flex;
     justify-content: center;
@@ -91,19 +85,17 @@ header {
     margin: 0 auto;
 }
 
-/* КАРТКА - ФІКСОВАНА ВИСОТА */
 .cat-card {
-    background: var(--card-bg);
+    background: rgba(30, 30, 30, 0.7);
     border-radius: 28px;
     overflow: hidden;
     width: 350px;
-    height: 620px; /* <--- Гарантує однаковість */
+    height: 620px;
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    position: relative;
-	backdrop-filter: blur(10px); background: rgba(30, 30, 30, 0.7);
 }
 
 .cat-card:hover {
@@ -112,13 +104,10 @@ header {
     border-color: rgba(0, 242, 254, 0.3);
 }
 
-/* ФОТО - ЖОРСТКИЙ РОЗМІР */
 .cat-card img {
     width: 100%;
-    height: 320px; /* Фото завжди займає рівно стільки */
-    min-height: 320px;
+    height: 320px;
     object-fit: cover;
-    display: block;
     transition: 0.5s;
 }
 
@@ -126,51 +115,35 @@ header {
     transform: scale(1.05);
 }
 
-/* ТЕКСТОВИЙ БЛОК */
 .cat-info {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Заповнює простір */
+    flex-grow: 1;
     text-align: center;
     align-items: center;
 }
 
-/* Імена на головній сторінці з градієнтом */
 .cat-info h2 {
     font-family: 'Unbounded', sans-serif;
     font-size: 2.2rem;
-    font-weight: 900;
-    margin-bottom: 15px;
-    letter-spacing: -1px;
-    text-transform: uppercase;
-    
-    /* Створення градієнту для тексту */
     background: linear-gradient(45deg, var(--accent-pes) 0%, var(--accent-mysh) 100%);
-    -webkit-background-clip: text; /* Обрізаємо фон по контуру тексту */
-    -webkit-text-fill-color: transparent; /* Робимо сам текст прозорим */
-    
-    transition: 0.3s;
-}
-
-.cat-card:hover .cat-info h2 {
-    text-shadow: 0 0 20px rgba(0, 242, 254, 0.5); /* Додаємо неонове світіння */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
 }
 
 .cat-info p {
     color: var(--text-muted);
-    font-size: 1rem;
-    margin-bottom: 20px;
-    /* Обмежуємо 3 рядками, щоб не розпирало */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-/* КНОПКА - ПОВНА ПЕРЕЗБОРКА */
+/* КНОПКИ */
 .btn {
-    margin-top: auto; /* <--- Завжди внизу */
+    margin-top: auto;
     display: block;
     width: 100%;
     max-width: 260px;
@@ -184,14 +157,7 @@ header {
     border-radius: 14px;
     text-transform: uppercase;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 25px rgba(0, 242, 254, 0.4);
-    filter: brightness(1.1);
 }
 
 .back-link {
@@ -201,43 +167,25 @@ header {
     gap: 10px;
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 1rem;
-    font-weight: 600;
     padding: 12px 24px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.03);
-    margin: 0 auto 30px auto; /* Центрує саму кнопку */
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    width: fit-content;
-}
-
-.back-link:hover {
-    color: var(--accent-pes);
-    background: rgba(0, 242, 254, 0.07);
-    border-color: var(--accent-pes);
-    transform: scale(1.05); /* Кнопка трохи збільшується */
-}
-
-/* Анімація самої лапки при наведенні */
-.back-link:hover span {
-    transform: rotate(-20deg) scale(1.2);
-    display: inline-block;
+    margin-bottom: 30px;
+    transition: 0.3s;
 }
 
 /* СТОРІНКА ДЕТАЛЕЙ */
 .profile-container {
     max-width: 900px;
     margin: 40px auto;
-    background: var(--card-bg);
+    background: rgba(30, 30, 30, 0.7);
     padding: 40px;
     border-radius: 30px;
-	backdrop-filter: blur(10px); background: rgba(30, 30, 30, 0.7);
-    /* Вирівнювання вмісту */
+    backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
 }
 
 .profile-avatar {
@@ -246,126 +194,60 @@ header {
     border-radius: 40px;
     object-fit: cover;
     margin-bottom: 20px;
-    border: 4px solid var(--bg-dark);
 }
 
-/* Величезне градієнтне ім'я на сторінці деталей */
 .profile-text h1 {
     font-family: 'Unbounded', sans-serif;
     font-size: 3.5rem;
-    line-height: 1;
-    margin-bottom: 10px;
-    
-    /* Ще більш насичений градієнт */
     background: linear-gradient(135deg, #fff 0%, var(--accent-pes) 50%, var(--accent-mysh) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* ГАЛЕРЕЯ - СІТКА */
-.gallery-section {
-    width: 100%;
-    margin-top: 40px;
-    padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.gallery-section h3 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 1.5rem;
-    margin-bottom: 25px;
-    color: #fff;
-    text-align: center;
-}
-
+/* ГАЛЕРЕЯ */
 .gallery-grid {
     display: grid;
-    /* Робимо 3 колонки, які красиво стискаються на маленьких екранах */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 20px;
     width: 100%;
+    margin-top: 30px;
 }
 
-/* ЕЛЕМЕНТ ГАЛЕРЕЇ */
 .gallery-item {
-    position: relative;
     border-radius: 20px;
-    overflow: hidden; /* Щоб картинка не вилазила за закруглені краї */
-    aspect-ratio: 1 / 1; /* Робимо всі прев'ю квадратними для симетрії */
-    background: var(--bg-dark);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    transition: 0.4s;
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Заповнює квадрат без деформації */
-    display: block;
-    transition: transform 0.6s ease;
-    filter: grayscale(20%); /* Легкий ретро-ефект у спокої */
+    object-fit: cover;
 }
 
-/* ЕФЕКТИ ПРИ НАВЕДЕННІ */
-.gallery-item:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 242, 254, 0.2); /* Світіння в колір ПесДюка */
-    z-index: 10;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1);
-    filter: grayscale(0%); /* Колір стає насиченим */
-}
-
-/* Додаємо іконку збільшення при наведенні */
-.gallery-item::after {
-    content: '🔍';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2rem;
-    opacity: 0;
-    transition: 0.3s;
-    pointer-events: none;
-}
-
-.gallery-item:hover::after {
-    opacity: 1;
-}
-
-/* Теги */
-.tag {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.7rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
-.pes .tag { background: rgba(0, 242, 254, 0.1); color: var(--accent-pes); }
-.mysh .tag { background: rgba(112, 0, 255, 0.1); color: var(--accent-mysh); }
-
-/* Адаптація для телефонів */
-@media (max-width: 600px) {
-    .gallery-grid {
-        grid-template-columns: repeat(1, 1fr); /* На мобілках — по одному */
-    }
-}
-
+/* МЕДІА-ЗАПИТИ (Адаптивність) */
 @media (max-width: 600px) {
     header {
-        padding: 40px 15px; /* Зменшуємо порожнечу зверху і знизу */
+        padding: 40px 15px; 
     }
 
     header h1 {
-        letter-spacing: -0.5px; /* Трохи щільніше для вузьких екранів */
+        font-size: 2.2rem;
+        letter-spacing: -0.5px; 
     }
     
     .profile-text h1 {
-        font-size: 2.2rem; /* Зменшуємо ім'я кота на сторінці деталей */
+        font-size: 2.2rem; 
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr; /* По два в ряд на мобілках */
+        gap: 10px;
+    }
+
+    .profile-container {
+        padding: 20px;
+        margin: 20px 10px;
     }
 }
