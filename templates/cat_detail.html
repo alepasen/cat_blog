@@ -33,13 +33,18 @@
 			<div class="gallery-grid">
     {% for photo in cat.gallery %}
         <div class="gallery-item">
-            <img src="{{ url_for('static', filename=photo) }}" alt="Фото {{ cat.name }}">
-        </div> {% endfor %}
+            <a href="{{ url_for('static', filename=photo) }}" data-fslightbox="gallery">
+                <img src="{{ url_for('static', filename=photo) }}" alt="Фото {{ cat.name }}">
+            </a>
+        </div>
+    {% endfor %}
 </div>
 </div>
 
         <button class="btn" onclick="alert('Мяу! Дякуємо за увагу!')">Погладити {{ cat.name }}</button>
     </div>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.3.1/index.min.js"></script>
 
 </body>
 </html>
