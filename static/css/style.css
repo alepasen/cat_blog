@@ -1,0 +1,157 @@
+/* Скидання стандартних стилів */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background: white;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #2d3436;
+}
+
+/* Контейнер для карток */
+.cat-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Картка котика */
+.cat-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 350px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Фото котика */
+.cat-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover; /* Фото заповнить блок, не розтягуючись */
+}
+
+/* Інфо-блок під фото */
+.cat-info {
+    padding: 25px;
+    text-align: center;
+}
+
+.cat-info h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.tag {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.pes .tag { background-color: #4db6ac; }    /* Колір для ПесДюка */
+.mysh .tag { background-color: #ba68c8; }   /* Колір для Мишки */
+
+/* Стилі для сторінки деталей */
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #5271ff;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #f4f4f9;
+}
+
+.profile-bio h3 {
+    margin: 20px 0 10px 0;
+    color: #2d3436;
+}
+
+.profile-bio p {
+    font-size: 1.1rem;
+    color: #636e72;
+}
+
+/* Колір фону сторінки залежно від котика */
+body.pes { background-color: #e0f2f1; }
+body.mysh { background-color: #f3e5f5; }
+
+/* Кнопка */
+.btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #5271ff;
+    color: white;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #ff4081;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #a0a0a0;
+}

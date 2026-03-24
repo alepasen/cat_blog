@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ cat.name }} - Деталі</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="detail-page {{ cat.id }}">
+
+    <div class="profile-container">
+        <a href="/" class="back-link">← Назад до всіх</a>
+        
+        <div class="profile-header">
+            <img src="{{ url_for('static', filename=cat.img) }}" alt="{{ cat.name }}" class="profile-avatar">
+            <div class="profile-text">
+                <h1>{{ cat.name }}</h1>
+                <span class="tag">{{ cat.role }}</span>
+            </div>
+        </div>
+
+        <div class="profile-bio">
+            <h3>Про мене:</h3>
+            <p>{{ cat.desc }}</p>
+            <hr>
+            <h3>Мої секрети:</h3>
+            <p>{{ cat.full_bio }}</p>
+        </div>
+
+        <button class="btn" onclick="alert('Мяу! Дякуємо за увагу!')">Погладити {{ cat.name }}</button>
+    </div>
+
+</body>
+</html>
