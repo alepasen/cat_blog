@@ -21,7 +21,7 @@ cats_list = [
         "full_bio": "Мишка — це енергія в чистому вигляді. Її хобі: випрошувати їжу та бігати з улюбленою іграшкою.",
         "button_text": "Дивитись фото",
         "img": "mysh.jpg",
-        "gallery": ["mysh1.jpg", "mysh2.jpg"]
+        "gallery": ["mysh1.jpg", "mysh2.jpg", "mysh3.jpg", "mysh4.jpg"]
     }
 ]
 
