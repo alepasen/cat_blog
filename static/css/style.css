@@ -157,7 +157,8 @@ header h1 {
 .back-link {
     display: inline-flex;
     align-items: center;
-    gap: 10px; /* Відступ між лапкою та текстом */
+    justify-content: center;
+    gap: 10px;
     color: var(--text-muted);
     text-decoration: none;
     font-size: 1rem;
@@ -166,9 +167,9 @@ header h1 {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.03);
-    margin-bottom: 30px;
+    margin: 0 auto 30px auto; /* Центрує саму кнопку */
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	width: fit-content;
+    width: fit-content;
 }
 
 .back-link:hover {
@@ -191,10 +192,10 @@ header h1 {
     background: var(--card-bg);
     padding: 40px;
     border-radius: 30px;
-    text-align: center;
-	display: flex;
+    /* Вирівнювання вмісту */
+    display: flex;
     flex-direction: column;
-    align-items: center; /* Центрує все: і кнопку з лапкою, і фото, і текст */
+    align-items: center;
     text-align: center;
 }
 
