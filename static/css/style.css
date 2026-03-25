@@ -225,6 +225,63 @@ header h1 {
     margin-top: auto;
 }
 
+/* --- ПОКРАЩЕННЯ ТЕКСТОВОГО БЛОКУ --- */
+
+/* Основний опис під ім'ям */
+.intro-text {
+    margin: 30px auto;
+    font-size: 1.3rem !important; /* Трохи більший шрифт */
+    line-height: 1.8 !important;
+    color: var(--text-muted);
+    max-width: 85%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 30px;
+}
+
+/* Картка з фічешками */
+.secrets-card {
+    background: rgba(112, 0, 255, 0.03) !important; /* Дуже легкий фіолетовий відблиск */
+    border: 1px solid rgba(112, 0, 255, 0.1) !important;
+    border-radius: 30px;
+    padding: 35px;
+    margin: 40px 0;
+    text-align: left;
+    transition: 0.4s;
+}
+
+.secrets-card:hover {
+    background: rgba(112, 0, 255, 0.07) !important;
+    border-color: var(--accent-mysh) !important;
+    transform: translateY(-5px);
+}
+
+.secrets-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.secrets-header h3 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.4rem;
+    color: var(--accent-mysh);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.emoji-icon {
+    font-size: 1.8rem;
+}
+
+.secrets-content p {
+    font-size: 1.15rem !important;
+    color: #f0f0f0 !important;
+    line-height: 1.7;
+    font-style: normal !important; /* Прибираємо курсив для кращої читабельності */
+    margin: 0;
+}
+
 .profile-container {
     max-width: 1000px;
     margin: 50px auto;
@@ -522,6 +579,91 @@ header h1 {
 @keyframes fly-and-fade {
     0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
     100% { transform: translate(-50%, -150px) scale(1.5); opacity: 0; }
+}
+
+/* --- СТИЛІ ДЛЯ НЕОНОВОГО РОЗДІЛЮВАЧА --- */
+.neon-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-pes), var(--accent-mysh), transparent);
+    margin: 60px 0; /* Великий відступ зверху та знизу */
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.5); /* Неонове сяйво */
+    opacity: 0.7;
+}
+
+
+/* --- ПОВНА МОБІЛЬНА АДАПТАЦІЯ (ДЛЯ СТОРАНКИ ДЕТАЛЕЙ) --- */
+
+/* Налаштування для екранів менше 900px (планшети та великі телефони) */
+@media (max-width: 900px) {
+    .profile-container {
+        padding: 30px;
+        margin: 30px 15px; /* Менші відступи зовні, щоб картка не злипалася з краями */
+        border-radius: 30px;
+    }
+
+    .profile-avatar {
+        width: 280px !important; /* Трохи зменшуємо фото */
+        height: 280px !important;
+        border-radius: 30px;
+    }
+
+    .profile-text h1 {
+        font-size: 3rem !important; /* Менше ім'я */
+    }
+}
+
+/* Налаштування для екранів менше 650px (смартфони) */
+@media (max-width: 650px) {
+    .profile-actions {
+        margin-bottom: 40px !important; /* Менший відступ від кнопки до фото */
+    }
+
+    .profile-btn {
+        padding: 12px 25px !important;
+        font-size: 1rem !important;
+    }
+
+    .profile-avatar {
+        width: 200px !important; /* Суттєво зменшуємо фото для телефону */
+        height: 200px !important;
+        border-radius: 20px;
+        margin-bottom: 25px !important; /* Додаємо відступ знизу, щоб текст не наповзав */
+    }
+
+    .profile-text h1 {
+        font-size: 2.2rem !important; /* Ще менше ім'я */
+    }
+
+    .profile-description p {
+        font-size: 1.1rem !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Адаптуємо секцію секретів */
+    .bio-section h3 {
+        font-size: 1.3rem !important;
+    }
+
+    /* Адаптуємо галерею */
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* Фотографії стають меншими, щоб помістилося більше */
+        gap: 10px; /* Менші відступи між фото */
+    }
+
+    .gallery-item {
+        border-radius: 12px;
+    }
+
+    .neon-divider {
+        margin: 40px 0; /* Менші відступи навколо розділювача */
+    }
+
+    /* Кнопка повернення */
+    .back-btn {
+        padding: 10px 20px !important;
+        font-size: 0.9rem !important;
+    }
 }
 
 /* МОБІЛЬНА ВЕРСІЯ */
