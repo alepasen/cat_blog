@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ cat.name }} - Деталі</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+</head>
+<body class="detail-page {{ cat.id }}">
+
+    <div class="profile-container">
+        
+        <a href="/" class="back-link">
+            <span>🐾</span> Назад до всіх
+        </a>
+        
+        <div class="profile-header">
+            <img src="{{ url_for('static', filename=cat.img) }}" alt="{{ cat.name }}" class="profile-avatar">
+            <div class="profile-text">
+                <h1>{{ cat.name }}</h1>
+                <span class="tag">{{ cat.role }}</span>
+            </div>
+        </div>
+
+        <div class="profile-bio">
+            <h3>Про мене:</h3>
+            <p>{{ cat.desc }}</p>
+            <hr>
+            <h3>Мої секрети:</h3>
+            <p>{{ cat.full_bio }}</p>
+        </div>
+
+        <div class="gallery-section">
+            <h3>Галерея пухнастика:</h3>
+            <div class="gallery-grid">
+                {% for photo in cat.gallery %}
+                <div class="gallery-item">
+                    <a href="{{ url_for('static', filename=photo) }}" data-fslightbox="gallery">
+                        <img src="{{ url_for('static', filename=photo) }}" alt="Фото {{ cat.name }}">
+                    </a>
+                </div>
+                {% endfor %}
+            </div> </div> <button class="btn" onclick="alert('Мяу! Дякуємо за увагу!')">Погладити {{ cat.name }}</button>
+
+    </div> <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.3.1/index.min.js"></script>
+</body>
+</html>
