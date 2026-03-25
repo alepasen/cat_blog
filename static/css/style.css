@@ -425,3 +425,52 @@ header h1 {
 @media (max-width: 600px) {
     header h1 { font-size: 2.2rem; }
     .cat-card { width: 100%; height: auto; min-height: 600px; }
+	
+	/* --- СТИЛІ ДЛЯ ВІДКРИТОЇ ГАЛЕРЕЇ (FSLIGHTBOX) --- */
+
+/* 1. М'яке, плавне заокруглення кутів для самого фото */
+.fslightbox-source {
+    border-radius: 20px !important; /* Те саме заокруглення, що й у карток */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important; /* Глибока тінь для об'єму */
+    
+    /* Додаємо легку неонову рамку, як у нас прийнято */
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+    
+    /* Щоб заокруглення не "обрізало" анімацію */
+    will-change: transform, opacity;
+}
+
+/* 2. Налаштування анімації відкриття (робимо її м'якшою) */
+/* Бібліотека використовує класи для станів, ми їх перевизначимо */
+
+/* Початковий стан (звідки починається анімація) */
+.fslightbox-fade-in-start {
+    opacity: 0 !important;
+    transform: scale(0.8) !important; /* Починаємо з трохи меншого розміру */
+}
+
+/* Кінцевий стан (плавний перехід) */
+.fslightbox-fade-in-end {
+    opacity: 1 !important;
+    transform: scale(1) !important; /* Повертаємо до нормального розміру */
+    
+    /* Збільшуємо час анімації та робимо її м'якшою (cubic-bezier) */
+    transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
+                transform 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
+/* 3. Стилізуємо кнопки навігації (вліво/вправо/закрити), щоб вони пасували */
+.fslightbox-toolbar-button,
+.fslightbox-slide-btn {
+    background: rgba(20, 20, 20, 0.7) !important;
+    border-radius: 50% !important;
+    color: var(--accent-pes) !important; /* Наш бірюзовий колір */
+    transition: 0.3s !important;
+}
+
+.fslightbox-toolbar-button:hover,
+.fslightbox-slide-btn:hover {
+    background: var(--accent-pes) !important;
+    color: #fff !important;
+    transform: scale(1.1) !important;
+}
