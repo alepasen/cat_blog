@@ -421,12 +421,7 @@ header h1 {
     transform: scale(1.1);
 }
 
-/* МОБІЛЬНА ВЕРСІЯ */
-@media (max-width: 600px) {
-    header h1 { font-size: 2.2rem; }
-    .cat-card { width: 100%; height: auto; min-height: 600px; }
-	
-	/* --- СТИЛІ ДЛЯ ВІДКРИТОЇ ГАЛЕРЕЇ (FSLIGHTBOX) --- */
+/* --- СТИЛІ ДЛЯ ВІДКРИТОЇ ГАЛЕРЕЇ (FSLIGHTBOX) --- */
 
 /* 1. М'яке, плавне заокруглення кутів для самого фото */
 .fslightbox-source {
@@ -503,3 +498,8 @@ header h1 {
     0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
     100% { transform: translate(-50%, -150px) scale(1.5); opacity: 0; }
 }
+
+/* МОБІЛЬНА ВЕРСІЯ */
+@media (max-width: 600px) {
+    header h1 { font-size: 2.2rem; }
+    .cat-card { width: 100%; height: auto; min-height: 600px; }
