@@ -184,18 +184,12 @@ header h1 {
     overflow: hidden;
 }
 
-/* КНОПКА ТЕПЕР ТОЧНО БУДЕ ВНИЗУ */
 .btn {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    background: linear-gradient(45deg, var(--accent-pes), var(--accent-mysh));
-    color: #fff !important;
-    text-decoration: none;
-    border-radius: 15px;
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    margin-top: auto;
+    /* Прибираємо інлайн-стилі, тепер усе в CSS */
+    text-decoration: none !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
 }
 
 /* МОБІЛЬНА ВЕРСІЯ */
