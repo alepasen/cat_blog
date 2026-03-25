@@ -79,11 +79,34 @@ header h1 {
     }
 }
 
+/* ПІДЗАГОЛОВОК У ХЕДЕРІ */
 .header-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem; /* Збільшуємо розмір */
+    font-weight: 500;
     color: #ffffff;
-    opacity: 0.8;
-    font-size: 1.2rem;
-    margin-top: 15px;
+    margin-top: 20px;
+    letter-spacing: 2px; /* Додаємо відстань між літерами для стилю */
+    text-transform: uppercase;
+    opacity: 0.9;
+    
+    /* Ефект "сонячного зайчика" — м'яке світіння навколо тексту */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 
+                 0 0 20px rgba(0, 242, 254, 0.2);
+    
+    /* Плавна поява (опціонально) */
+    animation: fadeInSubtitle 2s ease-out;
+}
+
+@keyframes fadeInSubtitle {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 0.9;
+        transform: translateY(0);
+    }
 }
 
 /* ФІКСАЦІЯ КАРТКИ */

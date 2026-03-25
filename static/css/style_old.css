@@ -46,14 +46,37 @@ header {
 
 header h1 {
     font-family: 'Unbounded', sans-serif;
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    color: #ffffff; /* Примусово білий */
+    font-size: clamp(2rem, 8vw, 4rem); /* Адаптивний розмір */
     text-transform: uppercase;
-    /* Градієнт, який світиться */
-    background: linear-gradient(90deg, #fff, var(--accent-pes), #fff);
+    letter-spacing: -1px;
+    margin: 0;
+
+    /* 1. СТВОРЮЄМО ГРАДІЄНТ (три кольори для переливу) */
+    background: linear-gradient(
+        90deg, 
+        var(--accent-pes), 
+        #ffffff, 
+        var(--accent-mysh), 
+        var(--accent-pes)
+    );
+    background-size: 200% auto; /* Розтягуємо фон для анімації */
+    
+    /* 2. ОБРІЗАЄМО ФОН ПО ЛІТЕРАХ */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.4));
+
+    /* 3. ЗАПУСКАЄМО ПЕРЕЛИВ */
+    animation: shine 4s linear infinite;
+    
+    /* Додаємо легке світіння для об'єму */
+    filter: drop-shadow(0 5px 15px rgba(0, 242, 254, 0.2));
+}
+
+/* МАГІЯ АНІМАЦІЇ */
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
 }
 
 .header-subtitle {
