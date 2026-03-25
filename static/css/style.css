@@ -357,15 +357,40 @@ header h1 {
     }
 }
 
-.back-link {
-    display: inline-block;
-    color: var(--text-muted);
-    text-decoration: none;
-    margin-bottom: 30px;
-    transition: 0.3s;
+/* --- НОВА КНОПКА ПОВЕРНЕННЯ В ПРОФІЛІ --- */
+
+.back-actions {
+    margin-bottom: 30px; /* Відступ від шапки профілю */
+    text-align: left; /* Вирівнювання по лівому краю */
 }
 
-.back-link:hover { color: var(--accent-pes); transform: translateX(-5px); }
+.back-btn {
+    display: inline-flex !important; /* Робимо її не на всю ширину */
+    width: auto !important;
+    padding: 12px 30px !important;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif !important; /* Montserrat для тексту посилання */
+    font-weight: 500 !important;
+    text-transform: none !important; /* Прибираємо uppercase */
+    letter-spacing: normal !important; /* Прибираємо відстань між літерами */
+    border-radius: 50px !important; /* Кругла форма */
+    
+    /* Додаємо фірмову неонову рамку ПесДюка */
+    border: 2px solid var(--accent-pes) !important;
+    background: transparent !important; /* Прозорий фон */
+    color: #ffffff !important;
+    
+    transition: all 0.3s ease !important;
+    cursor: pointer;
+}
+
+/* Ефект при наведенні */
+.back-btn:hover {
+    transform: scale(1.05) translateX(-5px) !important; /* Трохи збільшується і сунеться вліво */
+    background: rgba(0, 242, 254, 0.1) !important; /* Легке підсвічування фону */
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.5) !important; /* Неонове сяйво */
+    color: var(--accent-pes) !important; /* Текст стає блакитним */
+}
 
 /* Стиль для опису на сторінці деталей */
 .profile-description p {
