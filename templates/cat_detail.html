@@ -48,15 +48,54 @@
 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"></script>
 
-		<div class="profile-actions" style="margin-top: 50px; text-align: center;">
-				<button class="btn profile-btn" onclick="alert('Мяу! Дякуємо за увагу!')">
-					Погладити пухнастика
+			<div class="profile-actions" style="margin-top: 50px; text-align: center; position: relative;">
+				<button class="btn profile-btn" id="pet-button" onclick="createHearts(event)">
+					Погладити пухнастика ❤️
 				</button>
 			</div>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"></script>
 
     </div>
+
+	<script>
+    function createHearts(event) {
+        const button = event.currentTarget;
+        
+        // Створюємо кілька сердечок за один клік (наприклад, 5)
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => {
+                const heart = document.createElement('span');
+                heart.classList.add('heart-particle');
+                heart.innerText = '❤️'; // Можна змінити на інший символ
+                
+                // Визначаємо позицію кнопки
+                const rect = button.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                
+                // Встановлюємо початкову позицію сердечка (центр кнопки)
+                heart.style.left = x + 'px';
+                heart.style.top = y + window.scrollY + 'px';
+                
+                // Додаємо випадковість у полет (трохи вліво/вправо)
+                const randomX = (Math.random() - 0.5) * 100; // від -50px до +50px
+                heart.style.setProperty('--random-x', randomX + 'px');
+                
+                // Унікальна анімація для кожного сердечка (трохи випадковості)
+                heart.style.animationDelay = (Math.random() * 0.2) + 's';
+
+                document.body.appendChild(heart);
+                
+                // Видаляємо елемент з HTML після завершення анімації (через 1.5с)
+                setTimeout(() => {
+                    heart.remove();
+                }, 1500);
+                
+            }, i * 100); // Невелика затримка між появою кожного сердечка
+        }
+    }
+	</script>
 
 </body>
 </html>
