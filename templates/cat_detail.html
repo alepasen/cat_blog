@@ -8,7 +8,9 @@
 <body>
 
     <div class="profile-container">
-        <a href="/" class="back-link">🐾 Повернутися до друзів</a>
+        <div class="back-actions">
+		<a href="/" class="btn back-btn">🐾 Повернутися до друзів</a>
+		</div>
 
         <div class="profile-header">
             <img src="{{ url_for('static', filename=cat.img) }}" class="profile-avatar" alt="{{ cat.name }}">
