@@ -240,13 +240,13 @@ header h1 {
 
 /* Картка з фічешками */
 .secrets-card {
-    background: rgba(112, 0, 255, 0.03) !important; /* Дуже легкий фіолетовий відблиск */
+    text-align: center; /* Центруємо весь текст всередині картки */
+    padding: 30px !important;
+    margin: 40px auto !important; /* Відцентрували саму картку */
+    max-width: 80% !important; /* Трохи звузили, щоб вона не була занадто широкою */
+    border-radius: 20px !important;
+    background: rgba(112, 0, 255, 0.03) !important;
     border: 1px solid rgba(112, 0, 255, 0.1) !important;
-    border-radius: 30px;
-    padding: 35px;
-    margin: 40px 0;
-    text-align: left;
-    transition: 0.4s;
 }
 
 .secrets-card:hover {
@@ -255,17 +255,18 @@ header h1 {
     transform: translateY(-5px);
 }
 
+/* Центруємо заголовок секції */
 .secrets-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    justify-content: center !important; /* Центруємо flex-елементи */
+    display: flex !important;
     margin-bottom: 20px;
 }
 
 .secrets-header h3 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 1.4rem;
+    text-align: center !important;
     color: var(--accent-mysh);
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -274,11 +275,12 @@ header h1 {
     font-size: 1.8rem;
 }
 
+/* Центруємо опис */
 .secrets-content p {
-    font-size: 1.15rem !important;
-    color: #f0f0f0 !important;
-    line-height: 1.7;
-    font-style: normal !important; /* Прибираємо курсив для кращої читабельності */
+    text-align: center !important;
+    font-size: 1.1rem !important;
+    line-height: 1.6;
+    color: #f0f0f0;
     margin: 0;
 }
 
