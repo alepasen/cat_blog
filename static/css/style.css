@@ -284,15 +284,13 @@ header h1 {
 
 .profile-container {
     max-width: 1000px;
-    margin: 50px auto;
+    margin: 20px auto;
     padding: 40px;
-    background: rgba(25, 25, 25, 0.9);
+    background: var(--card-bg);
     backdrop-filter: blur(20px);
     border-radius: 40px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: block; /* Зміни з flex на block */
     text-align: center;
 }
 
@@ -584,11 +582,12 @@ header h1 {
 /* --- СТИЛІ ДЛЯ НЕОНОВОГО РОЗДІЛЮВАЧА --- */
 .neon-divider {
     border: none;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent-pes), var(--accent-mysh), transparent);
-    margin: 60px 0; /* Великий відступ зверху та знизу */
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.5); /* Неонове сяйво */
-    opacity: 0.7;
+    height: 2px !important; /* Додали товщину */
+    background: linear-gradient(90deg, transparent, var(--accent-pes), var(--accent-mysh), transparent) !important;
+    margin: 50px auto !important;
+    width: 80%; /* Не на всю ширину, так стильніше */
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+    display: block !important; /* Гарантуємо видимість */
 }
 
 
@@ -663,6 +662,26 @@ header h1 {
     .back-btn {
         padding: 10px 20px !important;
         font-size: 0.9rem !important;
+    }
+	
+	.profile-header {
+        display: block !important; /* Фото і текст стають один під одним */
+    }
+    
+    .profile-avatar {
+        width: 100% !important;
+        max-width: 250px !important; /* Щоб фото не було на весь гігантський екран */
+        height: auto !important;
+        margin: 0 auto 20px !important;
+    }
+    
+    .profile-text h1 {
+        font-size: 2.2rem !important;
+    }
+    
+    .intro-text {
+        font-size: 1.1rem !important;
+        max-width: 100%;
     }
 }
 
