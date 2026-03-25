@@ -25,7 +25,7 @@ body {
     /* ФОН ЯК ОДНА СУЦІЛЬНА ПІДЛОЖКА */
     background: 
         linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)), /* Темна накидка (85% прозорості) */
-        url('../images/fur_bg.jpg') no-repeat center center fixed; /* Одне велике фото по центру */
+        url('../images/fur_bg.png') no-repeat center center fixed; /* Одне велике фото по центру */
     background-size: cover; /* Розтягує фото на весь екран без швів */
 }
 
