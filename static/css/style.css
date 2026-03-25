@@ -239,15 +239,7 @@ header h1 {
     text-align: center;
 }
 
-/* Щоб ім'я кота світилося на сторінці деталей */
-.profile-container h1 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 3.5rem;
-    background: linear-gradient(135deg, #fff, var(--accent-pes), var(--accent-mysh));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 20px 0;
-}
+
 
 .profile-avatar {
     width: 350px !important; /* Фіксуємо розмір */
@@ -259,13 +251,30 @@ header h1 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
+/* ПЕРЕЛИВ ДЛЯ ІМЕНІ КОТА В ПРОФІЛІ */
+.profile-container h1, 
 .profile-text h1 {
     font-family: 'Unbounded', sans-serif;
     font-size: 3.5rem;
-    background: linear-gradient(135deg, #fff, var(--accent-pes), var(--accent-mysh));
+    
+    /* Створюємо градієнт, який довший за сам текст */
+    background: linear-gradient(
+        90deg, 
+        #ffffff, 
+        var(--accent-pes), 
+        var(--accent-mysh), 
+        #ffffff
+    );
+    background-size: 200% auto; /* Розтягуємо фон для руху */
+    
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
+    
+    /* Запускаємо анімацію (таку ж, як у хедері) */
+    animation: shine 4s linear infinite;
+    
+    margin: 20px 0;
+    filter: drop-shadow(0 5px 15px rgba(0, 242, 254, 0.2));
 }
 
 .profile-description {
@@ -300,4 +309,3 @@ header h1 {
 @media (max-width: 600px) {
     header h1 { font-size: 2.2rem; }
     .cat-card { width: 100%; height: auto; min-height: 600px; }
-}
