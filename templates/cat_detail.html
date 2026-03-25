@@ -8,94 +8,65 @@
 <body>
 
     <div class="profile-container">
-        
-        <img src="{{ url_for('static', filename=cat.img) }}" class="profile-avatar" alt="{{ cat.name }}">
+        <a href="/" class="back-link">🐾 Повернутися до друзів</a>
 
-        <div class="profile-text">
-            <h1>{{ cat.name }}</h1>
-            
-            <span class="tag">{{ cat.role }}</span>
+        <div class="profile-header">
+            <img src="{{ url_for('static', filename=cat.img) }}" class="profile-avatar" alt="{{ cat.name }}">
 
-            <div class="profile-description">
-                <p>{{ cat.desc }}</p>
+            <div class="profile-text">
+                <h1>{{ cat.name }}</h1>
+                <span class="tag">{{ cat.role }}</span>
+                
+                <div class="profile-description">
+                    <p>{{ cat.desc }}</p>
+                </div>
             </div>
-			
-			<div class="profile-secrets">
-				<hr>
-				<h3>🤫 Головні фішечки:</h3>
-				<p>{{ cat.full_bio }}</p>
-			</div>
         </div>
 
-        <div style="margin-top: 40px;">
-            <a href="/" class="btn" style="display: inline-flex; width: auto; padding: 12px 30px;">
-                Повернутися до друзів
-            </a>
+        <div class="bio-section secrets">
+            <h3>🤫 Головні фічешки:</h3>
+            <p>{{ cat.full_bio }}</p>
         </div>
-		
-		<div class="gallery-section">
-		<h3>📸 Галерея пухнастика</h3>
-			<div class="gallery-grid">
-				{% for photo in cat.gallery %}
-				<div class="gallery-item">
-					<a href="{{ url_for('static', filename=photo) }}" data-fslightbox="gallery">
-						<img src="{{ url_for('static', filename=photo) }}" alt="Фото {{ cat.name }}">
-					</a>
-				</div>
-				{% endfor %}
-			</div>
-		</div>
 
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"></script>
+        <div class="gallery-section">
+            <h3>📸 Галерея пухнастика</h3>
+            <div class="gallery-grid">
+                {% for photo in cat.gallery %}
+                <div class="gallery-item">
+                    <a href="{{ url_for('static', filename=photo) }}" data-fslightbox="gallery">
+                        <img src="{{ url_for('static', filename=photo) }}" alt="Фото {{ cat.name }}">
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
 
-			<div class="profile-actions" style="margin-top: 50px; text-align: center; position: relative;">
-				<button class="btn profile-btn" id="pet-button" onclick="createHearts(event)">
-					Погладити пухнастика ❤️
-				</button>
-			</div>
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"></script>
-
+        <div class="profile-actions" style="margin-top: 50px; text-align: center; position: relative;">
+            <button class="btn profile-btn" id="pet-button" onclick="createHearts(event)">
+                Погладити пухнастика ❤️
+            </button>
+        </div>
     </div>
 
-	<script>
-    function createHearts(event) {
-        const button = event.currentTarget;
-        
-        // Створюємо кілька сердечок за один клік (наприклад, 5)
-        for (let i = 0; i < 5; i++) {
-            setTimeout(() => {
-                const heart = document.createElement('span');
-                heart.classList.add('heart-particle');
-                heart.innerText = '❤️'; // Можна змінити на інший символ
-                
-                // Визначаємо позицію кнопки
-                const rect = button.getBoundingClientRect();
-                const x = rect.left + rect.width / 2;
-                const y = rect.top + rect.height / 2;
-                
-                // Встановлюємо початкову позицію сердечка (центр кнопки)
-                heart.style.left = x + 'px';
-                heart.style.top = y + window.scrollY + 'px';
-                
-                // Додаємо випадковість у полет (трохи вліво/вправо)
-                const randomX = (Math.random() - 0.5) * 100; // від -50px до +50px
-                heart.style.setProperty('--random-x', randomX + 'px');
-                
-                // Унікальна анімація для кожного сердечка (трохи випадковості)
-                heart.style.animationDelay = (Math.random() * 0.2) + 's';
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"></script>
 
-                document.body.appendChild(heart);
-                
-                // Видаляємо елемент з HTML після завершення анімації (через 1.5с)
+    <script>
+        function createHearts(event) {
+            const button = event.currentTarget;
+            for (let i = 0; i < 6; i++) {
                 setTimeout(() => {
-                    heart.remove();
-                }, 1500);
-                
-            }, i * 100); // Невелика затримка між появою кожного сердечка
+                    const heart = document.createElement('span');
+                    heart.classList.add('heart-particle');
+                    heart.innerText = '❤️';
+                    const rect = button.getBoundingClientRect();
+                    heart.style.left = (rect.left + rect.width / 2) + 'px';
+                    heart.style.top = (rect.top + rect.height / 2 + window.scrollY) + 'px';
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 1500);
+                }, i * 100);
+            }
         }
-    }
-	</script>
+    </script>
 
 </body>
 </html>

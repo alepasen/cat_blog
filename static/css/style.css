@@ -474,3 +474,32 @@ header h1 {
     color: #fff !important;
     transform: scale(1.1) !important;
 }
+/* ЦЕЙ БЛОК РОБИТЬ ГАЛЕРЕЮ М'ЯКОЮ ТА КРУГЛОЮ */
+.fslightbox-source {
+    border-radius: 30px !important; /* ЗАОКРУГЛЕННЯ ТУТ */
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5) !important;
+    border: 2px solid var(--accent-pes) !important;
+}
+
+/* Плавна анімація появи */
+.fslightbox-fade-in-start { opacity: 0 !important; transform: scale(0.8) !important; }
+.fslightbox-fade-in-end { 
+    opacity: 1 !important; 
+    transform: scale(1) !important; 
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important; 
+}
+
+/* Стиль для сердечок (щоб вони не пропали) */
+.heart-particle {
+    position: absolute;
+    color: #ff4b6b;
+    font-size: 1.5rem;
+    pointer-events: none;
+    animation: fly-and-fade 1.5s ease-out forwards;
+    z-index: 9999;
+}
+
+@keyframes fly-and-fade {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    100% { transform: translate(-50%, -150px) scale(1.5); opacity: 0; }
+}
