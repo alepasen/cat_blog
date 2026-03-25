@@ -239,15 +239,7 @@ header h1 {
     text-align: center;
 }
 
-/* Щоб ім'я кота світилося на сторінці деталей */
-.profile-container h1 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 3.5rem;
-    background: linear-gradient(135deg, #fff, var(--accent-pes), var(--accent-mysh));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 20px 0;
-}
+
 
 .profile-avatar {
     width: 350px !important; /* Фіксуємо розмір */
@@ -259,12 +251,60 @@ header h1 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
+/* ПЕРЕЛИВ ДЛЯ ІМЕНІ КОТА В ПРОФІЛІ */
+.profile-container h1, 
 .profile-text h1 {
     font-family: 'Unbounded', sans-serif;
     font-size: 3.5rem;
-    background: linear-gradient(135deg, #fff, var(--accent-pes), var(--accent-mysh));
+    
+    /* Створюємо градієнт, який довший за сам текст */
+    background: linear-gradient(
+        90deg, 
+        #ffffff, 
+        var(--accent-pes), 
+        var(--accent-mysh), 
+        #ffffff
+    );
+    background-size: 200% auto; /* Розтягуємо фон для руху */
+    
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    
+    /* Запускаємо анімацію (таку ж, як у хедері) */
+    animation: shine 4s linear infinite;
+    
+    margin: 20px 0;
+    filter: drop-shadow(0 5px 15px rgba(0, 242, 254, 0.2));
+}
+
+/* СТИЛЬ ДЛЯ СЕКРЕТІВ */
+.profile-secrets {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(112, 0, 255, 0.05); /* Легкий відтінок кольору Миш’яка */
+    border-radius: 20px;
+    border-left: 4px solid var(--accent-mysh);
+    text-align: left;
+}
+
+.profile-secrets h3 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.2rem;
+    color: var(--accent-mysh);
+    margin-bottom: 10px;
+}
+
+.profile-secrets p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-main);
+    font-style: italic;
+}
+
+.profile-secrets hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
     margin-bottom: 20px;
 }
 
@@ -294,6 +334,50 @@ header h1 {
     line-height: 1.6;
     max-width: 800px;
     margin: 0 auto;
+}
+
+/* ГАЛЕРЕЯ */
+.gallery-section {
+    margin-top: 50px;
+    text-align: left;
+}
+
+.gallery-section h3 {
+    font-family: 'Unbounded', sans-serif;
+    color: var(--accent-pes);
+    margin-bottom: 25px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1; /* Робимо всі фото квадратними */
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+/* Ефекти при наведенні */
+.gallery-item:hover {
+    transform: scale(1.05) translateY(-5px);
+    border-color: var(--accent-pes);
+    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.3);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
 }
 
 /* МОБІЛЬНА ВЕРСІЯ */

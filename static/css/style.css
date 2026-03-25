@@ -316,6 +316,23 @@ header h1 {
     line-height: 1.6;
 }
 
+/* СПЕЦІАЛЬНИЙ СТИЛЬ ДЛЯ КНОПКИ В ПРОФІЛІ */
+.profile-btn {
+    display: inline-flex !important; /* Робимо її не на всю ширину */
+    width: auto !important;
+    padding: 15px 50px !important;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px; /* Більш округла для профілю */
+    cursor: pointer;
+}
+
+.profile-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px var(--accent-pes);
+}
+
 .back-link {
     display: inline-block;
     color: var(--text-muted);
