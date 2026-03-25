@@ -22,7 +22,7 @@
 			
 			<div class="profile-secrets">
 				<hr>
-				<h3>🤫 Мої секрети:</h3>
+				<h3>🤫 Головні фішечки:</h3>
 				<p>{{ cat.full_bio }}</p>
 			</div>
         </div>
@@ -32,6 +32,21 @@
                 Повернутися до друзів
             </a>
         </div>
+		
+		<div class="gallery-section">
+		<h3>📸 Галерея пухнастика</h3>
+			<div class="gallery-grid">
+				{% for photo in cat.gallery %}
+				<div class="gallery-item">
+					<a href="{{ url_for('static', filename=photo) }}" data-fslightbox="gallery">
+						<img src="{{ url_for('static', filename=photo) }}" alt="Фото {{ cat.name }}">
+					</a>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"></script>
 
     </div>
 
