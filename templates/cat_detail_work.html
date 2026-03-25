@@ -8,47 +8,68 @@
 <body>
 
     <div class="profile-container">
-        
-        <img src="{{ url_for('static', filename=cat.img) }}" class="profile-avatar" alt="{{ cat.name }}">
+        <div class="profile-actions" style="margin-bottom: 60px; text-align: center; position: relative;">
+            <button class="btn profile-btn" id="pet-button" onclick="createHearts(event)">
+                Погладити пухнастика ❤️
+            </button>
+        </div>
 
-        <div class="profile-text">
-            <h1>{{ cat.name }}</h1>
-            
-            <span class="tag">{{ cat.role }}</span>
+        <div class="profile-header">
+            <img src="{{ url_for('static', filename=cat.img) }}" class="profile-avatar" alt="{{ cat.name }}">
 
-            <div class="profile-description">
-                <p>{{ cat.desc }}</p>
+            <div class="profile-text">
+                <h1>{{ cat.name }}</h1>
+                <span class="tag">{{ cat.role }}</span>
+                
+                <div class="profile-description">
+                    <p>{{ cat.desc }}</p>
+                </div>
             </div>
-			
-			<div class="profile-secrets">
-				<hr>
-				<h3>🤫 Головні фішечки:</h3>
-				<p>{{ cat.full_bio }}</p>
-			</div>
         </div>
 
-        <div style="margin-top: 40px;">
-            <a href="/" class="btn" style="display: inline-flex; width: auto; padding: 12px 30px;">
-                Повернутися до друзів
-            </a>
+        <div class="bio-section secrets">
+            <h3>🤫 Головні фічешки:</h3>
+            <p>{{ cat.full_bio }}</p>
         </div>
-		
-		<div class="gallery-section">
-		<h3>📸 Галерея пухнастика</h3>
-			<div class="gallery-grid">
-				{% for photo in cat.gallery %}
-				<div class="gallery-item">
-					<a href="{{ url_for('static', filename=photo) }}" data-fslightbox="gallery">
-						<img src="{{ url_for('static', filename=photo) }}" alt="Фото {{ cat.name }}">
-					</a>
-				</div>
-				{% endfor %}
-			</div>
+
+        <div class="gallery-section">
+            <h3>📸 Галерея пухнастика</h3>
+            <div class="gallery-grid">
+                {% for photo in cat.gallery %}
+                <div class="gallery-item">
+                    <a href="{{ url_for('static', filename=photo) }}" data-fslightbox="gallery">
+                        <img src="{{ url_for('static', filename=photo) }}" alt="Фото {{ cat.name }}">
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        
+		<div class="back-actions">
+		<a href="/" class="btn back-btn">🐾 Повернутися до друзів</a>
 		</div>
-
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"></script>
-
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.min.js"></script>
+
+    <script>
+        function createHearts(event) {
+            const button = event.currentTarget;
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('span');
+                    heart.classList.add('heart-particle');
+                    heart.innerText = '❤️';
+                    const rect = button.getBoundingClientRect();
+                    heart.style.left = (rect.left + rect.width / 2) + 'px';
+                    heart.style.top = (rect.top + rect.height / 2 + window.scrollY) + 'px';
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 1500);
+                }, i * 100);
+            }
+        }
+    </script>
 
 </body>
 </html>
