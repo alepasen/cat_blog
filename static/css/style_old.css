@@ -128,11 +128,25 @@ header h1 {
     border-color: rgba(0, 242, 254, 0.4); /* Підсвічування рамки в колір ПесДюка */
 }
 
+/* СТИЛЬНИЙ ТЕГ (Красавчик / Роль) */
+.tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.1); /* Напівпрозора підкладка */
+    border-radius: 50px; /* Округлі краї */
+    font-size: 0.8rem;
+    color: var(--accent-pes); /* Блакитний колір */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 242, 254, 0.3);
+}
+
+/* ФІКС ІНЛАЙН-СТИЛІВ (Прибираємо сміття з HTML) */
 .cat-card img {
-    width: 100%;
-    height: 350px !important; /* Тепер фото справа буде таким же, як зліва */
-    object-fit: cover;
-	transition: transform 0.5s ease;
+    /* Прибираємо те, що заважало в HTML */
+    height: 350px !important; 
+    object-fit: cover !important;
 }
 
 .cat-card:hover img {

@@ -175,13 +175,40 @@ header h1 {
 }
 
 .cat-info p {
-    color: #b0b0b0;
-    font-size: 0.95rem;
-    /* Обмежуємо опис 3-ма рядками, щоб не розпирало картку */
+    color: #e0e0e0; /* Робимо текст трохи світлішим за muted */
+    font-size: 1.1rem; /* Збільшуємо (було 0.95rem) */
+    font-style: italic; /* Додаємо характеру цитати */
+    line-height: 1.4;
+    margin-bottom: 20px;
+    
+    /* Обмеження в 3 рядки залишаємо, щоб не попливла висота картки */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+
+    /* Ефект м'якого об'єму */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.cat-card:hover .cat-info p {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transition: 0.3s ease;
+}
+
+.cat-info p::before {
+    content: "«";
+    color: var(--accent-pes);
+    font-family: 'Unbounded', sans-serif;
+    margin-right: 5px;
+}
+
+.cat-info p::after {
+    content: "»";
+    color: var(--accent-mysh);
+    font-family: 'Unbounded', sans-serif;
+    margin-left: 5px;
 }
 
 /* КНОПКА ТЕПЕР ТОЧНО БУДЕ ВНИЗУ */
