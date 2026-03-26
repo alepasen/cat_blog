@@ -69,7 +69,7 @@ header h1 {
     to   { opacity: 0.9; transform: translateY(0); }
 }
 
-/* ====================== КАРТКИ КОТІВ ====================== */
+/* ====================== КАРТКИ КОТІВ (ВИПРАВЛЕНО) ====================== */
 
 .cat-container {
     display: flex;
@@ -85,7 +85,7 @@ header h1 {
     background: rgba(30, 30, 30, 0.9);
     border-radius: 28px;
     width: 350px;
-    height: 650px;
+    height: 650px;                  /* фіксована висота — важливо для однакових карток */
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -103,6 +103,7 @@ header h1 {
 .cat-card img {
     height: 350px;
     object-fit: cover;
+    width: 100%;
     transition: transform 0.4s ease;
 }
 
@@ -114,9 +115,18 @@ header h1 {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    justify-content: space-between;
+    flex-grow: 1;                    /* важливо */
+    justify-content: space-between;  /* штовхає кнопку вниз */
     text-align: center;
+}
+
+/* Якщо хочеш ще надійніше притиснути кнопку вниз — додай це */
+.cat-info > * {
+    margin-bottom: 15px;
+}
+
+.cat-info > *:last-child {
+    margin-bottom: 0;
 }
 
 .cat-info h2 {
@@ -134,34 +144,65 @@ header h1 {
     color: #e0e0e0;
     font-size: 1.1rem;
     font-style: italic;
-    line-height: 1.4;
+    line-height: 1.45;
     margin-bottom: 20px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    flex-grow: 1;                    /* додатковий захист */
 }
 
 .cat-card:hover .cat-info p {
     color: #ffffff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
-.cat-info p::before { content: "«"; color: var(--accent-pes); font-family: 'Unbounded', sans-serif; }
-.cat-info p::after  { content: "»"; color: var(--accent-mysh); font-family: 'Unbounded', sans-serif; }
+.cat-info p::before { 
+    content: "«"; 
+    color: var(--accent-pes); 
+    font-family: 'Unbounded', sans-serif; 
+    margin-right: 4px;
+}
+.cat-info p::after { 
+    content: "»"; 
+    color: var(--accent-mysh); 
+    font-family: 'Unbounded', sans-serif; 
+    margin-left: 4px;
+}
 
 .tag {
     display: inline-block;
     padding: 6px 16px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50px;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     color: var(--accent-pes);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 15px;
     border: 1px solid rgba(0, 242, 254, 0.3);
+}
+
+/* Кнопка — завжди внизу */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 16px 20px;
+    background: linear-gradient(45deg, var(--accent-pes), var(--accent-mysh));
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 15px;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-top: auto;           /* найважливіше для фіксації внизу */
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 242, 254, 0.4);
 }
 
 /* ====================== КНОПКИ ====================== */
