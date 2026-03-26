@@ -2,12 +2,14 @@
 
 :root {
     --bg-dark: #121212;
-    --card-bg: rgba(25, 25, 25, 0.9); /* Темна, але контрастна картка */
-    --text-main: #ffffff; 
+    --card-bg: rgba(25, 25, 25, 0.9);
+    --text-main: #ffffff;
     --text-muted: #b0b0b0;
-    --accent-pes: #00f2fe; 
+    --accent-pes: #00f2fe;
     --accent-mysh: #7000ff;
 }
+
+/* ====================== БАЗОВІ СТИЛІ ====================== */
 
 * {
     margin: 0;
@@ -18,8 +20,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
     color: var(--text-main);
-    background-color: var(--bg-dark);
-    /* ФОН - ПЕРЕВІРТЕ, ЩО ФАЙЛ fur_bg.png В ПАПЦІ images */
     background: 
         linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
         url('/static/images/fur_bg.png') no-repeat center center fixed;
@@ -27,18 +27,8 @@ body {
     min-height: 100vh;
 }
 
-/* ЦЕНТРУВАННЯ КОНТЕЙНЕРА */
-.cat-container {
-    display: flex !important; /* !important змусить браузер слухатися */
-    justify-content: center !important;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto !important; /* Це виставить блок по центру сторінки */
-}
+/* ====================== ТИПОГРАФІКА ТА ХЕДЕР ====================== */
 
-/* ХЕДЕР - РОБИМО ТЕКСТ ВИДИМИМ */
 header {
     text-align: center;
     padding: 100px 20px 60px;
@@ -46,116 +36,78 @@ header {
 
 header h1 {
     font-family: 'Unbounded', sans-serif;
-    font-size: clamp(2rem, 8vw, 4rem); /* Адаптивний розмір */
+    font-size: clamp(2rem, 8vw, 4rem);
     text-transform: uppercase;
     letter-spacing: -1px;
-    margin: 0;
-
-    /* 1. СТВОРЮЄМО ГРАДІЄНТ (три кольори для переливу) */
-    background: linear-gradient(
-        90deg, 
-        var(--accent-pes), 
-        #ffffff, 
-        var(--accent-mysh), 
-        var(--accent-pes)
-    );
-    background-size: 200% auto; /* Розтягуємо фон для анімації */
-    
-    /* 2. ОБРІЗАЄМО ФОН ПО ЛІТЕРАХ */
+    background: linear-gradient(90deg, var(--accent-pes), #ffffff, var(--accent-mysh), var(--accent-pes));
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    /* 3. ЗАПУСКАЄМО ПЕРЕЛИВ */
     animation: shine 4s linear infinite;
-    
-    /* Додаємо легке світіння для об'єму */
     filter: drop-shadow(0 5px 15px rgba(0, 242, 254, 0.2));
 }
 
-/* МАГІЯ АНІМАЦІЇ */
-@keyframes shine {
-    to {
-        background-position: 200% center;
-    }
-}
-
-/* ПІДЗАГОЛОВОК У ХЕДЕРІ */
 .header-subtitle {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.4rem; /* Збільшуємо розмір */
+    font-size: 1.4rem;
     font-weight: 500;
     color: #ffffff;
     margin-top: 20px;
-    letter-spacing: 2px; /* Додаємо відстань між літерами для стилю */
+    letter-spacing: 2px;
     text-transform: uppercase;
     opacity: 0.9;
-    
-    /* Ефект "сонячного зайчика" — м'яке світіння навколо тексту */
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 
                  0 0 20px rgba(0, 242, 254, 0.2);
-    
-    /* Плавна поява (опціонально) */
     animation: fadeInSubtitle 2s ease-out;
 }
 
-@keyframes fadeInSubtitle {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 0.9;
-        transform: translateY(0);
-    }
+@keyframes shine {
+    to { background-position: 200% center; }
 }
 
-/* ФІКСАЦІЯ КАРТКИ */
+@keyframes fadeInSubtitle {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 0.9; transform: translateY(0); }
+}
+
+/* ====================== КАРТКИ КОТІВ ====================== */
+
+.cat-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .cat-card {
     background: rgba(30, 30, 30, 0.9);
     border-radius: 28px;
-    width: 350px; 
-    height: 650px; /* Фіксована висота, щоб кнопки не тікали */
+    width: 350px;
+    height: 650px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
-	transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
 }
 
 .cat-card:hover {
-    transform: translateY(-15px); /* Картка піднімається вгору */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); /* Глибока тінь */
-    border-color: rgba(0, 242, 254, 0.4); /* Підсвічування рамки в колір ПесДюка */
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    border-color: rgba(0, 242, 254, 0.4);
 }
 
-/* СТИЛЬНИЙ ТЕГ (Красавчик / Роль) */
-.tag {
-    display: inline-block;
-    padding: 6px 16px;
-    background: rgba(255, 255, 255, 0.1); /* Напівпрозора підкладка */
-    border-radius: 50px; /* Округлі краї */
-    font-size: 0.8rem;
-    color: var(--accent-pes); /* Блакитний колір */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    border: 1px solid rgba(0, 242, 254, 0.3);
-}
-
-/* ФІКС ІНЛАЙН-СТИЛІВ (Прибираємо сміття з HTML) */
 .cat-card img {
-    /* Прибираємо те, що заважало в HTML */
-    height: 350px !important; 
-    object-fit: cover !important;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
 }
 
 .cat-card:hover img {
-    transform: scale(1.05); /* Фото трохи збільшується всередині */
-}
-
-/* Сяйво імені при наведенні */
-.cat-card:hover .cat-info h2 {
-    text-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+    transform: scale(1.05);
 }
 
 .cat-info {
@@ -163,145 +115,116 @@ header h1 {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    justify-content: space-between; /* Розштовхує текст і кнопку */
+    justify-content: space-between;
     text-align: center;
 }
 
 .cat-info h2 {
     font-family: 'Unbounded', sans-serif;
     font-size: 2rem;
-    color: #ffffff;
     margin-bottom: 10px;
+    transition: text-shadow 0.3s ease;
+}
+
+.cat-card:hover .cat-info h2 {
+    text-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
 }
 
 .cat-info p {
-    color: #e0e0e0; /* Робимо текст трохи світлішим за muted */
-    font-size: 1.1rem; /* Збільшуємо (було 0.95rem) */
-    font-style: italic; /* Додаємо характеру цитати */
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    font-style: italic;
     line-height: 1.4;
     margin-bottom: 20px;
-    
-    /* Обмеження в 3 рядки залишаємо, щоб не попливла висота картки */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-
-    /* Ефект м'якого об'єму */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .cat-card:hover .cat-info p {
     color: #ffffff;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-    transition: 0.3s ease;
 }
 
-.cat-info p::before {
-    content: "«";
+.cat-info p::before { content: "«"; color: var(--accent-pes); font-family: 'Unbounded', sans-serif; }
+.cat-info p::after  { content: "»"; color: var(--accent-mysh); font-family: 'Unbounded', sans-serif; }
+
+.tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    font-size: 0.8rem;
     color: var(--accent-pes);
-    font-family: 'Unbounded', sans-serif;
-    margin-right: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 242, 254, 0.3);
 }
 
-.cat-info p::after {
-    content: "»";
-    color: var(--accent-mysh);
-    font-family: 'Unbounded', sans-serif;
-    margin-left: 5px;
-}
+/* ====================== КНОПКИ ====================== */
 
-/* КНОПКА ТЕПЕР ТОЧНО БУДЕ ВНИЗУ */
 .btn {
     display: block;
     width: 100%;
     padding: 16px;
     background: linear-gradient(45deg, var(--accent-pes), var(--accent-mysh));
-    color: #fff !important;
+    color: #fff;
     text-decoration: none;
     border-radius: 15px;
     font-family: 'Unbounded', sans-serif;
     font-weight: 700;
     margin-top: auto;
+    transition: all 0.3s ease;
 }
 
-/* --- ПОКРАЩЕННЯ ТЕКСТОВОГО БЛОКУ --- */
+/* ====================== ДОДАТКОВІ СЕКЦІЇ ====================== */
 
-/* Основний опис під ім'ям */
 .intro-text {
     margin: 30px auto;
-    font-size: 1.3rem !important; /* Трохи більший шрифт */
-    line-height: 1.8 !important;
+    font-size: 1.3rem;
+    line-height: 1.8;
     color: var(--text-muted);
     max-width: 85%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 30px;
 }
 
-/* Картка з фічешками */
 .secrets-card {
-    text-align: center; /* Центруємо весь текст всередині картки */
-    padding: 30px !important;
-    margin: 40px auto !important; /* Відцентрували саму картку */
-    max-width: 80% !important; /* Трохи звузили, щоб вона не була занадто широкою */
-    border-radius: 20px !important;
-    background: rgba(112, 0, 255, 0.03) !important;
-    border: 1px solid rgba(112, 0, 255, 0.1) !important;
+    text-align: center;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 80%;
+    border-radius: 20px;
+    background: rgba(112, 0, 255, 0.03);
+    border: 1px solid rgba(112, 0, 255, 0.1);
+    transition: all 0.3s ease;
 }
 
 .secrets-card:hover {
-    background: rgba(112, 0, 255, 0.07) !important;
-    border-color: var(--accent-mysh) !important;
+    background: rgba(112, 0, 255, 0.07);
+    border-color: var(--accent-mysh);
     transform: translateY(-5px);
 }
 
-/* Центруємо заголовок секції */
-.secrets-header {
-    justify-content: center !important; /* Центруємо flex-елементи */
-    display: flex !important;
-    margin-bottom: 20px;
-}
-
-.secrets-header h3 {
-    text-align: center !important;
-    color: var(--accent-mysh);
-    font-family: 'Unbounded', sans-serif;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.emoji-icon {
-    font-size: 1.8rem;
-}
-
-/* Центруємо опис */
-.secrets-content p {
-    text-align: center !important;
-    font-size: 1.1rem !important;
-    line-height: 1.6;
-    color: #f0f0f0;
-    margin: 0;
-}
+/* ====================== ПРОФІЛЬ КОТА ====================== */
 
 .profile-container {
     max-width: 1000px;
     margin: 20px auto;
     padding: 40px;
-    /* Змінюємо 0.9 на 0.7 або 0.8 для більшої прозорості */
-    background: rgba(25, 25, 25, 0.6) !important; 
-    backdrop-filter: blur(15px); /* Це розмиє фон за склом, буде ефект Frosty Glass */
+    background: rgba(25, 25, 25, 0.6);
+    backdrop-filter: blur(15px);
     border-radius: 40px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    display: block;
     text-align: center;
 }
 
-
-
 .profile-avatar {
-    width: 350px !important; /* Фіксуємо розмір */
-    height: 350px !important;
+    width: 350px;
+    height: 350px;
     border-radius: 40px;
     object-fit: cover;
     margin-bottom: 30px;
@@ -309,61 +232,17 @@ header h1 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* ПЕРЕЛИВ ДЛЯ ІМЕНІ КОТА В ПРОФІЛІ */
-.profile-container h1, 
+.profile-container h1,
 .profile-text h1 {
     font-family: 'Unbounded', sans-serif;
     font-size: 3.5rem;
-    
-    /* Створюємо градієнт, який довший за сам текст */
-    background: linear-gradient(
-        90deg, 
-        #ffffff, 
-        var(--accent-pes), 
-        var(--accent-mysh), 
-        #ffffff
-    );
-    background-size: 200% auto; /* Розтягуємо фон для руху */
-    
+    background: linear-gradient(90deg, #ffffff, var(--accent-pes), var(--accent-mysh), #ffffff);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    /* Запускаємо анімацію (таку ж, як у хедері) */
     animation: shine 4s linear infinite;
-    
-    margin: 20px 0;
     filter: drop-shadow(0 5px 15px rgba(0, 242, 254, 0.2));
-}
-
-/* СТИЛЬ ДЛЯ СЕКРЕТІВ */
-.profile-secrets {
-    margin-top: 30px;
-    padding: 20px;
-    background: rgba(112, 0, 255, 0.05); /* Легкий відтінок кольору Миш’яка */
-    border-radius: 20px;
-    border-left: 4px solid var(--accent-mysh);
-    text-align: left;
-}
-
-.profile-secrets h3 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 1.2rem;
-    color: var(--accent-mysh);
-    margin-bottom: 10px;
-}
-
-.profile-secrets p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--text-main);
-    font-style: italic;
-}
-
-.profile-secrets hr {
-    border: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .profile-description {
@@ -372,99 +251,25 @@ header h1 {
     font-style: italic;
     max-width: 700px;
     line-height: 1.6;
-}
-
-/* СПЕЦІАЛЬНИЙ СТИЛЬ ДЛЯ КНОПКИ В ПРОФІЛІ */
-.profile-btn {
-    display: inline-flex !important; /* Робимо її не на всю ширину */
-    width: auto !important;
-    padding: 15px 50px !important;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 50px; /* Більш округла для профілю */
-    cursor: pointer;
-}
-
-.profile-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px var(--accent-pes);
-}
-
-/* СТИЛІ ДЛЯ АНІМАЦІЇ СЕРДЕЧОК */
-.heart-particle {
-    position: absolute;
-    color: #ff4b6b; /* Гарний червоний колір */
-    font-size: 1.5rem;
-    pointer-events: none; /* Щоб мишка не чіпляла їх */
-    user-select: none;
-    animation: fly-and-fade 1.5s ease-out forwards;
-    z-index: 100; /* Щоб летіли поверх всього */
-}
-
-/* Сама анімація полету та зникання */
-@keyframes fly-and-fade {
-    0% {
-        transform: translate(-50%, -50%) scale(0.5);
-        opacity: 1;
-    }
-    100% {
-        /* В кінці летять вгору і трохи вбік (визначається в JS) */
-        transform: translate(-50%, -150px) scale(1.2) rotate(20deg);
-        opacity: 0; /* Повністю зникають */
-    }
-}
-
-/* --- НОВА КНОПКА ПОВЕРНЕННЯ В ПРОФІЛІ --- */
-
-.back-actions {
-    margin-top: 60px; /* Відступ від шапки профілю */
-    text-align: left; /* Вирівнювання по лівому краю */
-}
-
-.back-btn {
-    display: inline-flex !important; /* Робимо її не на всю ширину */
-    width: auto !important;
-    padding: 12px 30px !important;
-    font-size: 1rem;
-    font-family: 'Montserrat', sans-serif !important; /* Montserrat для тексту посилання */
-    font-weight: 500 !important;
-    text-transform: none !important; /* Прибираємо uppercase */
-    letter-spacing: normal !important; /* Прибираємо відстань між літерами */
-    border-radius: 50px !important; /* Кругла форма */
-    
-    /* Додаємо фірмову неонову рамку ПесДюка */
-    border: 2px solid var(--accent-pes) !important;
-    background: transparent !important; /* Прозорий фон */
-    color: #ffffff !important;
-    
-    transition: all 0.3s ease !important;
-    cursor: pointer;
-}
-
-/* Ефект при наведенні */
-.back-btn:hover {
-    transform: scale(1.05) translateX(-5px) !important; /* Трохи збільшується і сунеться вліво */
-    background: rgba(0, 242, 254, 0.1) !important; /* Легке підсвічування фону */
-    box-shadow: 0 0 20px rgba(0, 242, 254, 0.5) !important; /* Неонове сяйво */
-    color: var(--accent-pes) !important; /* Текст стає блакитним */
-}
-
-/* Стиль для опису на сторінці деталей */
-.profile-description p {
-    font-size: 1.2rem;
-    color: var(--text-main);
-    font-style: italic;
-    line-height: 1.6;
-    max-width: 800px;
     margin: 0 auto;
 }
 
-/* ГАЛЕРЕЯ */
-.gallery-section {
-    margin-top: 50px;
+.profile-secrets {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(112, 0, 255, 0.05);
+    border-radius: 20px;
+    border-left: 4px solid var(--accent-mysh);
     text-align: left;
 }
+
+.profile-secrets h3 {
+    font-family: 'Unbounded', sans-serif;
+    color: var(--accent-mysh);
+    margin-bottom: 10px;
+}
+
+/* ====================== ГАЛЕРЕЯ ====================== */
 
 .gallery-section h3 {
     font-family: 'Unbounded', sans-serif;
@@ -481,69 +286,52 @@ header h1 {
 .gallery-item {
     border-radius: 20px;
     overflow: hidden;
-    aspect-ratio: 1 / 1; /* Робимо всі фото квадратними */
+    aspect-ratio: 1 / 1;
     border: 2px solid rgba(255, 255, 255, 0.05);
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.5s;
-}
-
-/* Ефекти при наведенні */
 .gallery-item:hover {
     transform: scale(1.05) translateY(-5px);
     border-color: var(--accent-pes);
     box-shadow: 0 10px 30px rgba(0, 242, 254, 0.3);
 }
 
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
 .gallery-item:hover img {
     transform: scale(1.1);
 }
 
-/* --- СТИЛІ ДЛЯ ВІДКРИТОЇ ГАЛЕРЕЇ (FSLIGHTBOX) --- */
+/* ====================== FSLIGHTBOX ====================== */
 
-/* 1. М'яке, плавне заокруглення кутів для самого фото */
 .fslightbox-source {
-    border-radius: 20px !important; /* Те саме заокруглення, що й у карток */
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important; /* Глибока тінь для об'єму */
-    
-    /* Додаємо легку неонову рамку, як у нас прийнято */
-    border: 2px solid rgba(255, 255, 255, 0.1) !important;
-    
-    /* Щоб заокруглення не "обрізало" анімацію */
-    will-change: transform, opacity;
+    border-radius: 30px !important;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5) !important;
+    border: 2px solid var(--accent-pes) !important;
 }
 
-/* 2. Налаштування анімації відкриття (робимо її м'якшою) */
-/* Бібліотека використовує класи для станів, ми їх перевизначимо */
-
-/* Початковий стан (звідки починається анімація) */
 .fslightbox-fade-in-start {
     opacity: 0 !important;
-    transform: scale(0.8) !important; /* Починаємо з трохи меншого розміру */
+    transform: scale(0.8) !important;
 }
 
-/* Кінцевий стан (плавний перехід) */
 .fslightbox-fade-in-end {
     opacity: 1 !important;
-    transform: scale(1) !important; /* Повертаємо до нормального розміру */
-    
-    /* Збільшуємо час анімації та робимо її м'якшою (cubic-bezier) */
-    transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
-                transform 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+    transform: scale(1) !important;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
 }
 
-/* 3. Стилізуємо кнопки навігації (вліво/вправо/закрити), щоб вони пасували */
 .fslightbox-toolbar-button,
 .fslightbox-slide-btn {
     background: rgba(20, 20, 20, 0.7) !important;
     border-radius: 50% !important;
-    color: var(--accent-pes) !important; /* Наш бірюзовий колір */
-    transition: 0.3s !important;
+    color: var(--accent-pes) !important;
 }
 
 .fslightbox-toolbar-button:hover,
@@ -552,254 +340,101 @@ header h1 {
     color: #fff !important;
     transform: scale(1.1) !important;
 }
-/* ЦЕЙ БЛОК РОБИТЬ ГАЛЕРЕЮ М'ЯКОЮ ТА КРУГЛОЮ */
-.fslightbox-source {
-    border-radius: 30px !important; /* ЗАОКРУГЛЕННЯ ТУТ */
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5) !important;
-    border: 2px solid var(--accent-pes) !important;
-}
 
-/* Плавна анімація появи */
-.fslightbox-fade-in-start { opacity: 0 !important; transform: scale(0.8) !important; }
-.fslightbox-fade-in-end { 
-    opacity: 1 !important; 
-    transform: scale(1) !important; 
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important; 
-}
-
-/* Стиль для сердечок (щоб вони не пропали) */
-.heart-particle {
-    position: absolute;
-    color: #ff4b6b;
-    font-size: 1.5rem;
-    pointer-events: none;
-    animation: fly-and-fade 1.5s ease-out forwards;
-    z-index: 9999;
-}
-
-@keyframes fly-and-fade {
-    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
-    100% { transform: translate(-50%, -150px) scale(1.5); opacity: 0; }
-}
-
-/* --- СТИЛІ ДЛЯ НЕОНОВОГО РОЗДІЛЮВАЧА --- */
-.neon-divider {
-    border: none;
-    height: 2px !important; /* Додали товщину */
-    background: linear-gradient(90deg, transparent, var(--accent-pes), var(--accent-mysh), transparent) !important;
-    margin: 50px auto !important;
-    width: 80%; /* Не на всю ширину, так стильніше */
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
-    display: block !important; /* Гарантуємо видимість */
-}
-
-
-/* --- ПОВНА МОБІЛЬНА АДАПТАЦІЯ (ДЛЯ СТОРАНКИ ДЕТАЛЕЙ) --- */
-
-/* Налаштування для екранів менше 900px (планшети та великі телефони) */
-@media (max-width: 900px) {
-    .profile-container {
-        padding: 30px;
-        margin: 30px 15px; /* Менші відступи зовні, щоб картка не злипалася з краями */
-        border-radius: 30px;
-    }
-
-    .profile-avatar {
-        width: 280px !important; /* Трохи зменшуємо фото */
-        height: 280px !important;
-        border-radius: 30px;
-    }
-
-    .profile-text h1 {
-        font-size: 3rem !important; /* Менше ім'я */
-    }
-}
-
-/* Налаштування для екранів менше 650px (смартфони) */
-@media (max-width: 650px) {
-    .profile-actions {
-        margin-bottom: 40px !important; /* Менший відступ від кнопки до фото */
-    }
-
-    .profile-btn {
-        padding: 12px 25px !important;
-        font-size: 1rem !important;
-    }
-
-    .profile-avatar {
-        width: 200px !important; /* Суттєво зменшуємо фото для телефону */
-        height: 200px !important;
-        border-radius: 20px;
-        margin-bottom: 25px !important; /* Додаємо відступ знизу, щоб текст не наповзав */
-    }
-
-    .profile-text h1 {
-        font-size: 2.2rem !important; /* Ще менше ім'я */
-    }
-
-    .profile-description p {
-        font-size: 1.1rem !important;
-        line-height: 1.6 !important;
-    }
-
-    /* Адаптуємо секцію секретів */
-    .bio-section h3 {
-        font-size: 1.3rem !important;
-    }
-
-    /* Адаптуємо галерею */
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* Фотографії стають меншими, щоб помістилося більше */
-        gap: 10px; /* Менші відступи між фото */
-    }
-
-    .gallery-item {
-        border-radius: 12px;
-    }
-
-    .neon-divider {
-        margin: 40px 0; /* Менші відступи навколо розділювача */
-    }
-
-    /* Кнопка повернення */
-    .back-btn {
-        padding: 10px 20px !important;
-        font-size: 0.9rem !important;
-    }
-	
-	.profile-header {
-        display: block !important; /* Фото і текст стають один під одним */
-    }
-    
-    .profile-avatar {
-        width: 100% !important;
-        max-width: 250px !important; /* Щоб фото не було на весь гігантський екран */
-        height: auto !important;
-        margin: 0 auto 20px !important;
-    }
-    
-    .profile-text h1 {
-        font-size: 2.2rem !important;
-    }
-    
-    .intro-text {
-        font-size: 1.1rem !important;
-        max-width: 100%;
-    }
-}
-
-/* --- ПЛАВАЮЧА КНОПКА НАЗАД (FIXED) --- */
+/* ====================== КНОПКА НАЗАД (ПЛАВАЮЧА) ====================== */
 
 .floating-back-btn {
-    position: fixed; /* ГАЛОВНА КОМАНДА: Прикріплює до екрана */
-    bottom: 30px; /* Відступ від низу */
-    left: 30px; /* Відступ від лівого краю */
-    
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 12px 20px;
-    background: rgba(18, 18, 18, 0.8) !important; /* Напівпрозорий темний фон */
-    backdrop-filter: blur(10px); /* Легке розмиття фону за кнопкою */
-    
-    border-radius: 50px !important;
-    border: 2px solid var(--accent-pes) !important; /* Блакитний неон */
-    color: #ffffff !important;
-    text-decoration: none !important;
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    border: 2px solid var(--accent-pes);
+    color: #ffffff;
+    text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    
-    box-shadow: 0 5px 20px rgba(0, 242, 254, 0.3) !important; /* М'яке тіньове сяйво */
-    transition: all 0.3s ease-out !important;
-    z-index: 1000; /* Гарантуємо, що вона поверх галереї та всього іншого */
-    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 242, 254, 0.3);
+    transition: all 0.3s ease-out;
+    z-index: 1000;
 }
 
-/* Стилізація іконки та тексту */
+.floating-back-btn:hover {
+    transform: scale(1.05) translateY(-5px);
+    background: rgba(0, 242, 254, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.6);
+    border-color: #ffffff;
+}
+
 .floating-back-btn .icon {
     font-size: 1.2rem;
-    transition: transform 0.3s ease !important;
-}
-
-.pet-counter {
-    margin-top: 15px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-#count-number {
-    color: var(--accent-pes);
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-shadow: 0 0 10px var(--accent-pes);
-}
-
-.floating-back-btn .text {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* --- ЕФЕКТИ ПРИ НАВЕДЕННІ --- */
-.floating-back-btn:hover {
-    transform: scale(1.05) translateY(-5px) !important; /* Збільшується і трохи спливає */
-    background: rgba(0, 242, 254, 0.1) !important; /* Легкий блакитний відблиск на фоні */
-    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.6) !important; /* Потужне неонове сяйво */
-    border-color: #ffffff !important; /* Рамка стає білою */
+    transition: transform 0.3s ease;
 }
 
 .floating-back-btn:hover .icon {
-    transform: rotate(-15deg) scale(1.2) !important; /* Лапка крутиться і збільшується */
+    transform: rotate(-15deg) scale(1.2);
 }
 
-/* --- АДАПТАЦІЯ ДЛЯ МОБІЛЬНИХ (ДЛЯ КНОПКИ) --- */
+/* ====================== ЧАСТИНКИ ====================== */
+
+.heart-particle,
+.card-particle {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 9999;
+}
+
+.heart-particle {
+    color: #ff4b6b;
+    font-size: 1.5rem;
+    animation: fly-and-fade 1.5s ease-out forwards;
+}
+
+.card-particle {
+    font-size: 1.2rem;
+    animation: flyParticle 1.5s ease-out forwards;
+}
+
+@keyframes fly-and-fade {
+    0%   { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    100% { transform: translate(-50%, -150px) scale(1.5); opacity: 0; }
+}
+
+@keyframes flyParticle {
+    0%   { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(0.3) rotate(90deg); opacity: 0; }
+}
+
+/* ====================== АДАПТИВНІСТЬ ====================== */
+
+@media (max-width: 900px) {
+    .profile-container { padding: 30px; margin: 30px 15px; border-radius: 30px; }
+    .profile-avatar { width: 280px; height: 280px; border-radius: 30px; }
+    .profile-text h1 { font-size: 3rem; }
+}
+
 @media (max-width: 650px) {
+    .cat-card { width: 100%; height: auto; min-height: 600px; }
+    .profile-avatar { width: 200px; height: 200px; border-radius: 20px; margin-bottom: 25px; }
+    .profile-text h1 { font-size: 2.2rem; }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+    
     .floating-back-btn {
-        bottom: 20px; /* Трохи менші відступи на телефоні */
+        bottom: 20px;
         left: 20px;
         padding: 10px 15px;
     }
     
-    .floating-back-btn .text {
-        display: none; /* НА ТЕЛЕФОНІ ХОВАЄМО ТЕКСТ "НАЗАД", залишаємо тільки лапку */
-    }
-    
-    .floating-back-btn .icon {
-        font-size: 1.5rem; /* Збільшуємо лапку, щоб по ній було зручно тицяти пальцем */
-    }
+    .floating-back-btn .text { display: none; }
+    .floating-back-btn .icon { font-size: 1.5rem; }
 }
 
-/* --- ЕФЕКТ ЧАСТИНОК НА ГОЛОВНІЙ --- */
-
-.cat-card {
-    position: relative; /* Обов'язково для правильних координат частинок */
-    overflow: hidden;    /* Щоб лапки не вилітали на сусідні картки */
-}
-
-.card-particle {
-    position: absolute;
-    pointer-events: none; /* Щоб частинки не заважали клікати на кнопку */
-    font-size: 1.2rem;
-    z-index: 100;
-    opacity: 1;
-    animation: flyParticle 1.5s ease-out forwards;
-}
-
-@keyframes flyParticle {
-    0% {
-        transform: translate(0, 0) scale(1) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(var(--x), var(--y)) scale(0.3) rotate(90deg);
-        opacity: 0;
-    }
-}
-
-/* МОБІЛЬНА ВЕРСІЯ */
 @media (max-width: 600px) {
     header h1 { font-size: 2.2rem; }
-    .cat-card { width: 100%; height: auto; min-height: 600px; }
+}

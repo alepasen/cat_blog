@@ -288,11 +288,12 @@ header h1 {
     max-width: 1000px;
     margin: 20px auto;
     padding: 40px;
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
+    /* Змінюємо 0.9 на 0.7 або 0.8 для більшої прозорості */
+    background: rgba(25, 25, 25, 0.6) !important; 
+    backdrop-filter: blur(15px); /* Це розмиє фон за склом, буде ефект Frosty Glass */
     border-radius: 40px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    display: block; /* Зміни з flex на block */
+    display: block;
     text-align: center;
 }
 
@@ -684,6 +685,117 @@ header h1 {
     .intro-text {
         font-size: 1.1rem !important;
         max-width: 100%;
+    }
+}
+
+/* --- ПЛАВАЮЧА КНОПКА НАЗАД (FIXED) --- */
+
+.floating-back-btn {
+    position: fixed; /* ГАЛОВНА КОМАНДА: Прикріплює до екрана */
+    bottom: 30px; /* Відступ від низу */
+    left: 30px; /* Відступ від лівого краю */
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: rgba(18, 18, 18, 0.8) !important; /* Напівпрозорий темний фон */
+    backdrop-filter: blur(10px); /* Легке розмиття фону за кнопкою */
+    
+    border-radius: 50px !important;
+    border: 2px solid var(--accent-pes) !important; /* Блакитний неон */
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    
+    box-shadow: 0 5px 20px rgba(0, 242, 254, 0.3) !important; /* М'яке тіньове сяйво */
+    transition: all 0.3s ease-out !important;
+    z-index: 1000; /* Гарантуємо, що вона поверх галереї та всього іншого */
+    cursor: pointer;
+}
+
+/* Стилізація іконки та тексту */
+.floating-back-btn .icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease !important;
+}
+
+.pet-counter {
+    margin-top: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#count-number {
+    color: var(--accent-pes);
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px var(--accent-pes);
+}
+
+.floating-back-btn .text {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- ЕФЕКТИ ПРИ НАВЕДЕННІ --- */
+.floating-back-btn:hover {
+    transform: scale(1.05) translateY(-5px) !important; /* Збільшується і трохи спливає */
+    background: rgba(0, 242, 254, 0.1) !important; /* Легкий блакитний відблиск на фоні */
+    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.6) !important; /* Потужне неонове сяйво */
+    border-color: #ffffff !important; /* Рамка стає білою */
+}
+
+.floating-back-btn:hover .icon {
+    transform: rotate(-15deg) scale(1.2) !important; /* Лапка крутиться і збільшується */
+}
+
+/* --- АДАПТАЦІЯ ДЛЯ МОБІЛЬНИХ (ДЛЯ КНОПКИ) --- */
+@media (max-width: 650px) {
+    .floating-back-btn {
+        bottom: 20px; /* Трохи менші відступи на телефоні */
+        left: 20px;
+        padding: 10px 15px;
+    }
+    
+    .floating-back-btn .text {
+        display: none; /* НА ТЕЛЕФОНІ ХОВАЄМО ТЕКСТ "НАЗАД", залишаємо тільки лапку */
+    }
+    
+    .floating-back-btn .icon {
+        font-size: 1.5rem; /* Збільшуємо лапку, щоб по ній було зручно тицяти пальцем */
+    }
+}
+
+/* --- ЕФЕКТ ЧАСТИНОК НА ГОЛОВНІЙ --- */
+
+.cat-card {
+    position: relative; /* Обов'язково для правильних координат частинок */
+    overflow: hidden;    /* Щоб лапки не вилітали на сусідні картки */
+}
+
+.card-particle {
+    position: absolute;
+    pointer-events: none; /* Щоб частинки не заважали клікати на кнопку */
+    font-size: 1.2rem;
+    z-index: 100;
+    opacity: 1;
+    animation: flyParticle 1.5s ease-out forwards;
+}
+
+@keyframes flyParticle {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0.3) rotate(90deg);
+        opacity: 0;
     }
 }
 
