@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог двох пухнастиків</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+</head>
+<body>
+
+    <header>
+		<h1>🐾 Наше котяче життя</h1>
+		<p class="header-subtitle">Пригоди, сон та полювання на сонячних зайчиків</p>
+	</header>
+
+    <main class="cat-container">
+      {% for cat in cats %}
+<section class="cat-card {{ cat.id }}">
+    <img src="{{ url_for('static', filename=cat.img) }}" alt="{{ cat.name }}" style="width: 100%; height: auto;">
+    
+    <div class="cat-info">
+        <h2>{{ cat.name }}</h2>
+        <span class="tag">{{ cat.role }}</span>
+        <p>{{ cat.desc }}</p>
+        <a href="/cat/{{ cat.id }}" class="btn" style="text-decoration: none; display: inline-block;">
+            {{ cat.button_text }}
+        </a>
+    </div>
+</section>
+{% endfor %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Зроблено з любов'ю (та шерстю) 🐱🐱</p>
+    </footer>
+
+</body>
+</html>
