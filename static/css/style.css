@@ -288,11 +288,12 @@ header h1 {
     max-width: 1000px;
     margin: 20px auto;
     padding: 40px;
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
+    /* Змінюємо 0.9 на 0.7 або 0.8 для більшої прозорості */
+    background: rgba(25, 25, 25, 0.75) !important; 
+    backdrop-filter: blur(15px); /* Це розмиє фон за склом, буде ефект Frosty Glass */
     border-radius: 40px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    display: block; /* Зміни з flex на block */
+    display: block;
     text-align: center;
 }
 
