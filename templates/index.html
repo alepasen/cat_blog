@@ -17,7 +17,7 @@
 
     <main class="cat-container">
       {% for cat in cats %}
-<section class="cat-card {{ cat.id }}">
+	<section class="cat-card {{ cat.id }}" onmousemove="spawnParticles(this, event)">
     <img src="{{ url_for('static', filename=cat.img) }}" alt="{{ cat.name }}" style="width: 100%; height: auto;">
     
     <div class="cat-info">
@@ -28,13 +28,49 @@
             {{ cat.button_text }}
         </a>
     </div>
-</section>
+	</section>
 {% endfor %}
     </main>
 
     <footer>
         <p>&copy; 2026 Зроблено з любов'ю (та шерстю) 🐱🐱</p>
     </footer>
+	
+	<script>
+    function spawnParticles(card, event) {
+        // Створюємо частинку з шансом 10%, щоб не перевантажувати екран
+        if (Math.random() > 0.1) return; 
+
+        const particle = document.createElement('span');
+        particle.classList.add('card-particle');
+        
+        // Випадковий набір іконок
+        const icons = ['🐾', '✨', '🐱', '🧶'];
+        particle.innerText = icons[Math.floor(Math.random() * icons.length)];
+
+        const rect = card.getBoundingClientRect();
+        
+        // Позиція відносно курсора всередині картки
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+
+        // Випадковий напрямок розльоту
+        const destinationX = (Math.random() - 0.5) * 120; 
+        const destinationY = (Math.random() - 1) * 120; 
+        
+        particle.style.setProperty('--x', destinationX + 'px');
+        particle.style.setProperty('--y', destinationY + 'px');
+
+        card.appendChild(particle);
+
+        setTimeout(() => {
+            particle.remove();
+        }, 1500);
+    }
+</script>
 
 </body>
 </html>
