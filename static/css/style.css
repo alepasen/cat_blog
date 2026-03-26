@@ -720,6 +720,22 @@ header h1 {
     transition: transform 0.3s ease !important;
 }
 
+.pet-counter {
+    margin-top: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#count-number {
+    color: var(--accent-pes);
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px var(--accent-pes);
+}
+
 .floating-back-btn .text {
     font-size: 1rem;
     text-transform: uppercase;

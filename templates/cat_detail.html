@@ -17,6 +17,9 @@
             <button class="btn profile-btn" id="pet-button" onclick="createHearts(event)">
                 Погладити пухнастика ❤️
             </button>
+			<div class="pet-counter">
+				Нагладили: <span id="count-number">0</span> разів
+			</div>
         </div>
 
         <div class="profile-header">
@@ -77,6 +80,36 @@
                 }, i * 100);
             }
         }
+		
+		// Отримуємо ID кота (наприклад, pesdyuk або myshyak) з контексту Flask
+			const catId = "{{ cat.id }}"; 
+			const counterDisplay = document.getElementById('count-number');
+
+		// Завантажуємо кількість погладжувань з пам'яті браузера при завантаженні сторінки
+			let count = localStorage.getItem('pats_' + catId) || 0;
+			counterDisplay.innerText = count;
+
+			function createHearts(event) {
+		// 1. Збільшуємо лічильник
+				count++;
+				counterDisplay.innerText = count;
+				localStorage.setItem('pats_' + catId, count);
+
+		// 2. Твоя стара функція створення сердечок (залишається без змін)
+			const button = event.currentTarget;
+			for (let i = 0; i < 6; i++) {
+				setTimeout(() => {
+			const heart = document.createElement('span');
+					heart.classList.add('heart-particle');
+					heart.innerText = '❤️';
+            const rect = button.getBoundingClientRect();
+					heart.style.left = (rect.left + rect.width / 2) + 'px';
+					heart.style.top = (rect.top + rect.height / 2 + window.scrollY) + 'px';
+					document.body.appendChild(heart);
+					setTimeout(() => heart.remove(), 1500);
+        }, i * 100);
+    }
+}
     </script>
 
 </body>
