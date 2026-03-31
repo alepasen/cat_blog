@@ -782,19 +782,34 @@ header h1 {
 .card-particle {
     position: absolute;
     pointer-events: none;
-    z-index: 1000;
-    font-size: 1.5rem;
-    animation: explode 0.8s ease-out forwards;
+    z-index: 2000;
+    /* Тінь додає об'єму та яскравості */
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
+    will-change: transform, opacity;
+    animation: super-explode ease-out forwards;
 }
 
-@keyframes explode {
-    0% { transform: translate(0, 0) scale(1); opacity: 1; }
-    100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+@keyframes super-explode {
+    0% { 
+        transform: translate(-50%, -50%) scale(0) rotate(0deg); 
+        opacity: 0; 
+    }
+    15% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1.5) rotate(20deg); 
+    }
+    100% { 
+        transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0) rotate(var(--rot)); 
+        opacity: 0; 
+    }
 }
 
+/* Ефектний спалах кнопки */
 .btn-active {
-    filter: brightness(1.5);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    box-shadow: 0 0 40px var(--accent-pes) !important;
+    background: white !important;
+    color: black !important;
 }
 
 @keyframes flyParticle {

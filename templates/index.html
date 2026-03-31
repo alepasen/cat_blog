@@ -58,40 +58,36 @@
     </footer>
 	
 	<script>
-    function mobileExplosion(element, event) {
+function mobileExplosion(element, event) {
     const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     const card = element.closest('.cat-card');
     const url = element.getAttribute('href');
 
-    // Створюємо потужний вибух частинок
-    for (let i = 0; i < 15; i++) {
-        // Створюємо частинку примусово (ігноруючи Math.random у твоїй spawnParticles)
-        createSingleParticle(card, event); 
+    // КІЛЬКІСТЬ: Випускаємо 45 частинок для масовості
+    for (let i = 0; i < 45; i++) {
+        createSingleParticle(card, event, true); 
     }
 
-    // Якщо це мобільний, робимо паузу
     if (isMobile) {
-        event.preventDefault(); // Зупиняємо миттєвий перехід
-        
-        element.style.transform = 'scale(0.95)';
-        element.classList.add('btn-active'); // Можна додати спалах у CSS
+        event.preventDefault();
+        element.style.transform = 'scale(0.9)';
+        element.classList.add('btn-active');
 
         setTimeout(() => {
             window.location.href = url;
-        }, 650); // Пів секунди на насолоду ефектом
+        }, 700); // Трохи збільшили затримку, щоб встигли розлетітися
         
         return false;
     }
-    
-    // Для десктопа просто повертаємо true, і перехід йде як зазвичай
     return true;
 }
 
-// Окрема допоміжна функція, щоб не міняти твою основну spawnParticles
-function createSingleParticle(card, event) {
+function createSingleParticle(card, event, isExplosion = false) {
     const particle = document.createElement('span');
     particle.classList.add('card-particle');
-    const icons = ['🐾', '✨', '🧶', '🐱', '❤️'];
+    
+    // ЯСКРАВІСТЬ: Додаємо більше емодзі
+    const icons = ['🐾', '✨', '🧶', '🐱', '❤️', '🌈', '🐟', '🎈', '🍭', '⭐'];
     particle.innerText = icons[Math.floor(Math.random() * icons.length)];
 
     const rect = card.getBoundingClientRect();
@@ -101,12 +97,22 @@ function createSingleParticle(card, event) {
     particle.style.left = x + 'px';
     particle.style.top = y + 'px';
     
-    // Задаємо випадковий напрямок розльоту через CSS змінні
-    particle.style.setProperty('--dx', (Math.random() - 0.5) * 200 + 'px');
-    particle.style.setProperty('--dy', (Math.random() - 0.5) * 200 + 'px');
+    // ХАОТИЧНІСТЬ ТА МАСА:
+    // Якщо це вибух, розліт набагато сильніший (до 500px)
+    const range = isExplosion ? 500 : 150;
+    const dx = (Math.random() - 0.5) * range;
+    const dy = (Math.random() - 0.5) * range;
+    const size = isExplosion ? (Math.random() * 2 + 0.5) : 1.2; // Різні розміри
+    const duration = isExplosion ? (Math.random() * 0.4 + 0.6) : 0.8;
+
+    particle.style.fontSize = `${size}rem`;
+    particle.style.setProperty('--dx', `${dx}px`);
+    particle.style.setProperty('--dy', `${dy}px`);
+    particle.style.setProperty('--rot', `${(Math.random() - 0.5) * 720}deg`);
+    particle.style.animationDuration = `${duration}s`;
 
     card.appendChild(particle);
-    setTimeout(() => particle.remove(), 800);
+    setTimeout(() => particle.remove(), duration * 1000);
 }
 
 function spawnParticles(card, event) {
