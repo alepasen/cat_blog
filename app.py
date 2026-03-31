@@ -4,15 +4,12 @@ import os
 app = Flask(__name__)
 
 def get_cat_photos(cat_id):
-    # Шлях до папки з фото конкретного кота
     folder_path = os.path.join('static', 'images', cat_id)
-    
-    # Перевіряємо, чи існує папка, щоб не було помилки
     if os.path.exists(folder_path):
-        # Беремо всі файли, які закінчуються на .jpg, .png або .webp
-        photos = [f"{cat_id}/{file}" for file in os.listdir(folder_path) 
+        # Додаємо images/ перед назвою папки кота
+        photos = [f"images/{cat_id}/{file}" for file in os.listdir(folder_path) 
                   if file.lower().endswith(('.png', '.jpg', '.jpeg', '.webp'))]
-        return sorted(photos) # Сортуємо, щоб фото йшли по порядку
+        return sorted(photos)
     return []
 
 cats_list = [
