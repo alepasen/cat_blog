@@ -37,7 +37,9 @@ cats_list = [
 
 @app.route('/')
 def index():
-    return render_template('index.html', cats=cats_list)
+    # Отримуємо список спільних фото
+    common_photos = get_cat_photos("common")
+    return render_template('index.html', cats=cats_list, common_photos=common_photos)
 
 @app.route('/cat/<cat_id>')
 def cat_detail(cat_id):
