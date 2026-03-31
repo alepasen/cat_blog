@@ -24,9 +24,12 @@
         <h2>{{ cat.name }}</h2>
         <span class="tag">{{ cat.role }}</span>
         <p>{{ cat.desc }}</p>
-        <a href="/cat/{{ cat.id }}" class="btn" style="text-decoration: none; display: inline-block;">
-            {{ cat.button_text }}
-        </a>
+        <a href="/cat/{{ cat.id }}" 
+			class="btn" 
+			onclick="return mobileExplosion(this, event)" 
+			style="text-decoration: none; display: inline-block;">
+			{{ cat.button_text }}
+		</a>
     </div>
 	</section>
 {% endfor %}
@@ -55,39 +58,63 @@
     </footer>
 	
 	<script>
-    function spawnParticles(card, event) {
-        // Створюємо частинку з шансом 10%, щоб не перевантажувати екран
-        if (Math.random() > 0.1) return; 
+    function mobileExplosion(element, event) {
+    const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    const card = element.closest('.cat-card');
+    const url = element.getAttribute('href');
 
-        const particle = document.createElement('span');
-        particle.classList.add('card-particle');
+    // Створюємо потужний вибух частинок
+    for (let i = 0; i < 15; i++) {
+        // Створюємо частинку примусово (ігноруючи Math.random у твоїй spawnParticles)
+        createSingleParticle(card, event); 
+    }
+
+    // Якщо це мобільний, робимо паузу
+    if (isMobile) {
+        event.preventDefault(); // Зупиняємо миттєвий перехід
         
-        // Випадковий набір іконок
-        const icons = ['🐾', '✨', '🐱', '🧶'];
-        particle.innerText = icons[Math.floor(Math.random() * icons.length)];
-
-        const rect = card.getBoundingClientRect();
-        
-        // Позиція відносно курсора всередині картки
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-
-        particle.style.left = x + 'px';
-        particle.style.top = y + 'px';
-
-        // Випадковий напрямок розльоту
-        const destinationX = (Math.random() - 0.5) * 120; 
-        const destinationY = (Math.random() - 1) * 120; 
-        
-        particle.style.setProperty('--x', destinationX + 'px');
-        particle.style.setProperty('--y', destinationY + 'px');
-
-        card.appendChild(particle);
+        element.style.transform = 'scale(0.95)';
+        element.classList.add('btn-active'); // Можна додати спалах у CSS
 
         setTimeout(() => {
-            particle.remove();
-        }, 1500);
+            window.location.href = url;
+        }, 650); // Пів секунди на насолоду ефектом
+        
+        return false;
     }
+    
+    // Для десктопа просто повертаємо true, і перехід йде як зазвичай
+    return true;
+}
+
+// Окрема допоміжна функція, щоб не міняти твою основну spawnParticles
+function createSingleParticle(card, event) {
+    const particle = document.createElement('span');
+    particle.classList.add('card-particle');
+    const icons = ['🐾', '✨', '🧶', '🐱', '❤️'];
+    particle.innerText = icons[Math.floor(Math.random() * icons.length)];
+
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    particle.style.left = x + 'px';
+    particle.style.top = y + 'px';
+    
+    // Задаємо випадковий напрямок розльоту через CSS змінні
+    particle.style.setProperty('--dx', (Math.random() - 0.5) * 200 + 'px');
+    particle.style.setProperty('--dy', (Math.random() - 0.5) * 200 + 'px');
+
+    card.appendChild(particle);
+    setTimeout(() => particle.remove(), 800);
+}
+
+function spawnParticles(card, event) {
+    // Створюємо частинку лише з шансом 10%, щоб не спамити
+    if (Math.random() > 0.1) return; 
+    createSingleParticle(card, event);
+}
+
 </script>
 
 </body>
